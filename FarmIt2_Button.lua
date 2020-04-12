@@ -121,7 +121,7 @@ function FI_Select( bid )
 	-- copy to "clipboard"
 	FI_SELECTED = bid;
 
-	PlaySound("igAbilityIconPickup");
+	PlaySound(837); -- igAbilityIconPickup
 
 	-- selection indicator
 	_G["FI_Button_"..FI_SELECTED.."_Glow"]:Show();
@@ -138,7 +138,7 @@ function FI_Deselect( mute )
 	FI_SELECTED = false;
 
 	if not mute then
-		PlaySound("igAbilityIconDrop");
+		PlaySound(838); -- igAbilityIconDrop
 	end
 end
 
@@ -246,7 +246,7 @@ function FI_Click( self, click, down )
 			------------------------------------------------------------
 			if button.item then
 				FI_Clear_Button(button.id);
-				PlaySound("gsTitleOptionOK");
+				PlaySound(798); -- gsTitleOptionOK
 			end
 		
 		elseif IsControlKeyDown() then
@@ -529,7 +529,7 @@ function FI_Toggle_Bank( bid )
 		-- refresh item count
 		FI_Update_Button(button.id);
 		
-		PlaySound("TalentScreenClose");
+		PlaySound(6145); -- TalentScreenClose
 		FI_Message("Button ID "..button.id..":  Include Bank = "..strupper(tostring(button.bank)));
 	end
 end

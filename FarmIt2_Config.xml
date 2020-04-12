@@ -118,10 +118,10 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 					<OnClick>
 						if self:GetChecked() then
 							FI_Show(nil,true);
-							PlaySound("igMainMenuOptionCheckBoxOn");
+							PlaySound(856);
 						else
 							FI_Show(nil,false);
-							PlaySound("igMainMenuOptionCheckBoxOff");
+							PlaySound(857);
 						end
 					</OnClick>
 					<OnEnter>

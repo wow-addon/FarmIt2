@@ -947,9 +947,9 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
 			
 			-- decide which sound to use
 			if (data.count > data.objective) then
-				sound = "QUESTCOMPLETED";
+				sound = 619; -- QUESTCOMPLETED
 			else
-				sound = "QUESTADDED";
+				sound = 618; -- QUESTADDED
 			end
 		else
 			-- inform user we are erasing an objective
@@ -958,7 +958,7 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
 				sound = false;
 			else
 				message = "Farming objective abandoned.";
-				sound = "igQuestLogAbandonQuest";
+				sound = 846; -- igQuestLogAbandonQuest
 			end
 		end
 		
