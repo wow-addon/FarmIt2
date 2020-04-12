@@ -1,0 +1,152 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+	<Frame name="FI_HelpFrame" parent="FI_Panel_1">
+		<Size x="400" y="420"/>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText("General Help");
+				_G[self:GetName().."_Description"]:SetText(
+					"Below is a general guide on how to use FarmIt.\n"..
+					"Scroll down for more information."
+				);
+
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_HELP_TEXT );
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT" text="Help">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+				<Size x="370" y="355"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
+				</Anchors>
+				
+				<!--Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="10"/>
+					<TileSize val="5"/>
+					<BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+				</Backdrop-->
+				
+				<ScrollChild>
+					<Frame name="$parent_ScrollChildFrame">
+						<Size x="370" y="10"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						
+						<Layers>
+							<Layer level="ARTWORK">
+								<FontString name="$parent_Text" inherits="GameFontWhite" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT" x="0" y="0"/>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+
+
+	<Frame name="FI_CommandsFrame" parent="FI_Panel_2">
+		<Size x="400" y="420"/>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText("Configuration Commands");
+				_G[self:GetName().."_Description"]:SetText(
+					"Type  /farmit  followed by the desired command and any necessary parameters.\n"..
+					"Scroll the list below to see details on each command."
+				);
+
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_COMMANDS_TEXT );
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT" text="Help">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+				<Size x="370" y="355"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
+				</Anchors>
+				
+				<!--Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="10"/>
+					<TileSize val="5"/>
+					<BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+				</Backdrop-->
+				
+				<ScrollChild>
+					<Frame name="$parent_ScrollChildFrame">
+						<Size x="370" y="10"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						
+						<Layers>
+							<Layer level="ARTWORK">
+								<FontString name="$parent_Text" inherits="GameFontWhite" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT" x="0" y="0"/>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+
+</Ui>

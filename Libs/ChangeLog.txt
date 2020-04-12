@@ -1,0 +1,29 @@
+﻿----------------------------------------------------------------------------------------------------
+  Generic Lua Helper Functions (GLHF) - Change Log
+----------------------------------------------------------------------------------------------------
+
+v1.31
+* BoolToString() now returns a string (as one would expect) instead of a table of strings.
+  Result formatting can now be specified by passing a second parameter to the function.
+
+----------------------------------------------------------------------------------------------------
+
+v1.3
+* Rewrite of explode(), previous code was not fully functional!
+
+----------------------------------------------------------------------------------------------------
+
+v1.2
+
+* Fix: round() now explicitly checks if precision argument is nil, before defaulting.
+
+* Added ShortNum()
+
+----------------------------------------------------------------------------------------------------
+v1.1
+* Added BoolToString()
+
+----------------------------------------------------------------------------------------------------
+
+v1.0
+* First Public release.

@@ -1,0 +1,104 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+	<Script file="FarmIt2_Button.lua" />
+	
+	<Frame name="FI_TPL_Button" inherits="ItemButtonTemplate, SecureActionButtonTemplate" virtual="true">
+		<Size x="37" y="37" />
+		<Anchors>
+		</Anchors>
+		<Scripts>
+			<OnEnter>
+				FI_Tooltip(self);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<Layers>
+			<!-- Graphical Elements -->
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Background">
+					<Size x="66" y="66" />
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="-1" />
+					</Anchors>
+				</Texture>
+				<!--Texture name="$parent_Border" file="Interface\Buttons\UI-Quickslot2">
+					<Size x="66" y="66" />
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0" />
+					</Anchors>
+				</Texture-->
+			</Layer>
+			
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size x="36" y="36" />
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0" />
+					</Anchors>
+				</Texture>
+				
+				<FontString name="$parent_Objective" inherits="NumberFontNormal" text="" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT" x="3" y="-4" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_Count" inherits="NumberFontNormal" text="">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT" x="-3" y="3" />
+					</Anchors>
+				</FontString>
+			</Layer>
+			
+			<Layer level="OVERLAY">
+ 				<Texture name="$parent_Glow" alphaMode="MOD" hidden="true">
+					<Size x="33" y="33" />
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0" />
+					</Anchors>
+				</Texture>
+				<Texture name="$parent_Bank" file="Interface\Buttons\UI-AutoCastableOverlay" hidden="true">
+					<Size x="66" y="66" />
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0" />
+					</Anchors>
+				</Texture>
+				
+				<Button name="$parent_Item" inherits="SecureActionButtonTemplate" hidden="true">
+					<Attributes>
+						<Attribute name="type" type="string" value="item" />
+					</Attributes>
+					<Size x="36" y="36" />
+				</Button>
+			</Layer>
+		</Layers>
+		<Frames>
+			<EditBox name="$parent_Edit" letters="9" numeric="true" autoFocus="true" hidden="true">
+				<Size x="72" y="16" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT" x="2" y="-2" />
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						FI_Set_Objective("Buttons", FI_FrameToID(self:GetName()), self:GetNumber());
+						self:Hide();
+					</OnEnterPressed>
+					<OnEscapePressed>
+						self:Hide();
+					</OnEscapePressed>
+				</Scripts>
+				<FontString inherits="NumberFontNormal" justifyH="LEFT" />
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parent_Background">
+							<Color r="0" g="0" b="0" a="1" />
+						</Texture>
+					</Layer>
+				</Layers>
+			</EditBox>
+		</Frames>
+	</Frame>
+</Ui>

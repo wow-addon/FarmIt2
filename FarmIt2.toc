@@ -1,0 +1,22 @@
+﻿## Interface: 70100
+## Title: FarmIt2
+## Notes: A customizable inventory tracking tool.|n|cFF33CCFFBy CHiLLZ|r
+## Author: CHiLLZ <chillz@gmail.com>
+## License: Copyright 2006-2016, all rights reserved.
+## Website: http://www.curse.com/addons/wow/farm-it
+##
+## SavedVariablesPerCharacter: FI_SVPC_CONFIG,FI_SVPC_STYLE,FI_SVPC_DATA,FI_SVPC_CACHE
+## SavedVariables: FI_SV_CONFIG,FI_SV_DATA
+
+Libs\LibGLHF.lua
+
+FarmIt2_Locales.lua
+FarmIt2_Style.lua
+FarmIt2_Templates.lua
+FarmIt2_Data.lua
+FarmIt2_Button.xml
+FarmIt2_Group.xml
+FarmIt2_Currency.lua
+FarmIt2_Core.lua
+FarmIt2.xml
+FarmIt2_Config.xml

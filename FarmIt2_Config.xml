@@ -1,0 +1,361 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+	
+	<Script file="FarmIt2_Config.lua" />
+	
+	<Frame name="FI_ConfigFrame" parent="FI_Panel">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText(FI_TAGLINE);
+				_G[self:GetName().."_SubTitle"]:SetText("A customizable inventory tracker for World of Warcraft.");
+				
+				_G[self:GetName().."_Description"]:SetText(
+					"FarmIt has evolved a lot over the years through great feedback from its users. Thanks everyone!  :)\n"..
+					"User comments are welcome on the official download page:  |cFF33FF33www.curse.com/addons/wow/farm-it|r"
+				);
+				_G[self:GetName().."_Description"]:SetWidth( self:GetWidth() );
+				
+				_G[self:GetName().."_Body"]:SetText("");
+				_G[self:GetName().."_Body"]:SetWidth( self:GetWidth() );
+				
+				_G[self:GetName().."_Footer"]:SetText("FarmIt is designed and developed by |cFF33CCFFCHiLLZ|r.\nCopyright 2006-2015, all rights reserved.");
+				_G[self:GetName().."_Footer"]:SetWidth( self:GetWidth() );
+			</OnLoad>
+		</Scripts>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="10" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_SubTitle" inherits="GameFontNormal" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_SubTitle" relativePoint="BOTTOMLEFT" x="0" y="-20"/>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1"/>
+				</FontString>
+				
+				<FontString name="$parent_Body" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-20"/>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1"/>
+				</FontString>
+				
+				<FontString name="$parent_Footer" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Body" relativePoint="BOTTOMLEFT" x="0" y="0"/>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1"/>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="FI_ConfigFrame_1" parent="FI_Panel_1">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText("General Settings");
+				_G[self:GetName().."_Description"]:SetText("Due to the nature of FarmIt's purpose, most settings are saved on a per-character basis since different toons will have different professions, etc. However, statistical data and item related information such as farming templates (saved sets of items) are shared between characters.");
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT" text="Help">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+		
+			<CheckButton name="$parent_CB1" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="26" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						if (FI_LOADING == false) and FI_SVPC_CONFIG.show then
+							self:SetChecked(true);
+						else
+							self:SetChecked(false);
+						end
+					</OnShow>
+					<OnClick>
+						if self:GetChecked() then
+							FI_Show(nil,true);
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							FI_Show(nil,false);
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT");
+						GameTooltip.inherits = "GameFontNormalSmall";
+						GameTooltip:SetText("Toggle display of the entire addon.");
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parent_Label" inherits="GameFontNormalSmall" text="Show">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			
+		</Frames>
+	</Frame>
+
+	<Frame name="FI_ConfigFrame_2" parent="FI_Panel_2">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText(FI_TAGLINE.." - Buttons");
+				_G[self:GetName().."_Description"]:SetText("");
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+		</Frames>
+	</Frame>
+
+	<Frame name="FI_ConfigFrame_3" parent="FI_Panel_3">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText("Bars");
+				_G[self:GetName().."_Description"]:SetText("");
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+		</Frames>
+	</Frame>
+
+	<Frame name="FI_ConfigFrame_4" parent="FI_Panel_4">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText(FI_TAGLINE.." - Help");
+				_G[self:GetName().."_Description"]:SetText("Below is a general guide on how to use FarmIt.");
+				
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_HELP_TEXT );
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+				<Size x="550" y="480"/>
+				
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
+				</Anchors>
+				
+				<!--Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="10"/>
+					<TileSize val="5"/>
+					<BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+				</Backdrop-->
+				
+				<ScrollChild>
+					<Frame name="$parent_ScrollChildFrame">
+						<Size x="550" y="480"/>
+						
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						
+						<Layers>
+							<Layer level="ARTWORK">
+								<FontString name="$parent_Text" inherits="GameFontWhite" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT" x="0" y="0"/>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+
+
+	<Frame name="FI_ConfigFrame_5" parent="FI_Panel_5">
+		<Size x="550" y="480"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="5" y="-5"/>
+		</Anchors>
+
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."_Title"]:SetText(FI_TAGLINE.." - Commands");
+				_G[self:GetName().."_Description"]:SetText(
+					"Type  /farmit  followed by the desired action, and any necessary parameters."
+					--"|cFF00CCFFScroll down to see details on each command."
+				);
+
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_COMMANDS_TEXT );
+				_G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+			</OnLoad>
+		</Scripts>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="9" y="-9"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString name="$parent_Description" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+				<Size x="550" y="480"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
+				</Anchors>
+				
+				<!--Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="10"/>
+					<TileSize val="5"/>
+					<BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+				</Backdrop-->
+				
+				<ScrollChild>
+					<Frame name="$parent_ScrollChildFrame">
+						<Size x="550" y="480"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						
+						<Layers>
+							<Layer level="ARTWORK">
+								<FontString name="$parent_Text" inherits="GameFontWhite" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT" x="0" y="0"/>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+
+</Ui>

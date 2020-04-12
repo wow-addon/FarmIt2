@@ -1,0 +1,146 @@
+﻿--------------------------------------------------------------------------------
+  FarmIt Command Reference
+--------------------------------------------------------------------------------
+
+The latest version of this document can be found online at: 
+http://wow.curseforge.com/addons/farm-it/pages/commands/
+
+A general user guide can be found at: 
+http://wow.curseforge.com/addons/farm-it/pages/user-guide/
+
+--------------------------------------------------------------------------------
+
+This is a list of commands for use in-game. Type "/farmit" followed by the desired command.
+For example: "/farmit grow 1 R" sets item bar number 1 to horizontal mode, growing out to the right.
+
+--------------------------------------------------------------------------------
+
+help
+
+  Show the help window.
+
+
+options | config
+
+  Show the configuration window.
+
+
+reset
+
+  Reset the mod to default settings.
+
+
+show {#}
+
+  Toggle visibility of a button group, by bar number. 
+  Shows/hides all bars at once if no number given.
+
+
+lock {#}
+
+  Prevent a button group from being moved, by bar number. 
+  Locks the position of the entire addon if no bar number is given.
+
+
+scale {%} {#}
+
+  Change the visual scale of the addon, in decimal format: 1.25 = 125%. 
+  If a bar number is given, only that bar will be scaled.
+
+
+alpha {#} {#}
+
+  Change the opacity of the addon, in decimal format, from 0 (invisible) to 1.0 (opaque).
+  If a bar number is given, only that bar will be changed.
+
+
+alerts {chat|screen|sound}
+
+  Toggle alerts ON/OFF by type. 
+  For example: '/farmit alerts screen' enables/disables on-screen announcements. 
+  If no option is given, the current state of all alert settings will be displayed.
+
+
+tooltip {bar|button|currency}
+
+  Enable/disable display of FarmIt's tooltips, by category.
+  For example, to disable the tooltip on all bar *anchors*, you would type: /farmit tooltip bar
+
+
+currency {show|scale|alpha}
+
+  show
+    Toggle display of the currency bar.
+
+  scale
+    Change the visual scale of the currency bar, in decimal format: 1.25 = 125%.
+
+  alpha
+    Change the opacity of the currency bar, in decimal format, from 0 (invisible) to 1.0 (opaque).
+
+  If no option is present (ie: '/farmit currency'), toggles all currency tracking features ON/OFF at once. (per character)
+
+
+group {add|remove}
+
+  add
+    Adds a new bar (there is a limit of 24 bars total). 
+	New bars start with 12 buttons (4 of them showing) with a limit of 48 buttons per bar.
+
+  remove {#}
+    Followed by the bar number of the button group you wish to delete. 
+    This permanently destroys the group and all of its buttons!
+    
+    If no bar number is given, the last bar that was created (highest number) will be deleted.
+
+  list
+    Prints a list of all existing bar ID's. Useful if you have hidden individual bars.
+
+
+size {#} {#}
+
+  Set the total number of buttons available on a given bar. There is a limit of 48 buttons per bar.
+  For example: '/farmit size 1 10' would configure bar number one to have ten total buttons available on it. 
+  Setting a bar to a smaller size will permanently delete any extra buttons.
+  To simply hide some button spaces on a bar without destroying them, 
+  click on the 'quick size' buttons (+/-) on the bar anchor.
+
+
+grow {#} {L|R|U|D}
+
+  Controls the direction that a button group grows: (L)eft, (R)ight, (U)p, (D)own
+  For example: '/farmit grow 1 R' sets bar #1 to horizontal mode, growing to the right.
+
+
+style {default|minimal}
+
+  Choose a visual style (requires UI reload):
+    'default' is meant to match the stock WoW interface.
+    'minimal' is a clean look that goes better with addons like Bartender.
+
+  If you feel adventurous, you can edit FarmIt2_Style.lua to add your own graphical themes.
+
+
+tpl {save|load|delete|list}
+
+  save {#} {name}
+    Saves all the items in a given bar as a farming template for use again later. 
+    Specify the bar number you want to save, followed by a template name (no spaces in the name).
+
+  load {#} {category} {name}
+    Loads a saved item set (template) into the specified bar, by name (or category and name). 
+
+  delete {name}
+    Deletes a user created template, by name. 
+    To show all existing user templates, type: /farmit tpl list
+
+  list {category}
+    Specify a category to list the available bar templates it contains. 
+    Categories are: WOW, TBC, WOTLK, CATA. If no category is given, user created templates will be listed.
+
+
+rebuild
+
+  Rebuilds ALL data tables and reloads the UI. 
+  Only use this if you are having problems with saved data like templates, etc. 
+  WARNING: This will wipe out all your bars, preferences, and saved templates!

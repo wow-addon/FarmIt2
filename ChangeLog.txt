@@ -1,0 +1,630 @@
+﻿----------------------------------------------------------------------------------------------------
+  FarmIt - Change Log
+----------------------------------------------------------------------------------------------------
+
+v2.38
+* TOC update for the LEGION expansion and 7.1 content patch. (WoW 70100)
+
+----------------------------------------------------------------------------------------------------
+
+v2.37
+* Updated for the 6.2 content patch. (WoW 60200)
+
+* Fix: Setting the grow direction of a bar should no longer cause a Lua error.
+
+* Fix: Squashed a bug where removing (deleting) a bar could cause the wrong bar number to be shown 
+  in the bar anchor tooltip.
+
+* Changed the uptime check to 10 seconds, down from 30. This means that FarmIt won't wait as long 
+  after logging in to start responding to event triggers.
+
+* Max number of buttons per bar increased to 100. This limit exists only to contain the mess that 
+  a simple command typo could create.
+
+----------------------------------------------------------------------------------------------------
+
+v2.36
+* Updated command documentation with new "tooltip" command.
+
+* Fix: Corrected a typo in the command line feedback of the tooltip command.
+
+----------------------------------------------------------------------------------------------------
+
+v2.35
+* Revised some of the tooltip text in an effort to conserve screen space.
+
+* New Feature: FarmIt's tooltips can now be turned on/off at any time. The tooltips are separated 
+  into three categories: bar anchors, item buttons, and the currency bar. To toggle display of the 
+  tooltip for a given part of FarmIt, the new command is: /farmit tooltip bar|button|currency
+  
+  For example, to enable/disable tooltips on all bar *anchors* you would type: /farmit tooltip bar
+
+----------------------------------------------------------------------------------------------------
+
+v2.34
+* Currency tracking now allows up to 7 digit objectives.
+
+* Fix: The currency bar now updates immediately upon checking/unchecking a "Show on Backpack" box
+  in the Currency tab of your character window.
+
+----------------------------------------------------------------------------------------------------
+
+v2.33
+* Fix: Right-clicking a bar anchor now correctly takes you to the FarmIt help window,
+  Shift-Right-click the anchor to see the full list of configuration commands.
+
+* Fix: Increased precision of stack count in item tooltips.
+
+* Enhancement: Item slots now accept farming objectives up to 9 digits long. If you are seriously 
+  farming for a billion of something, go outside and get some sunshine... right now. Really. 
+  Up to 4 digit goal numbers will show up on the button before being shortened. The exact goal 
+  amount is always displayed in the button tooltip.
+
+* Enhancement: The bar anchor tooltip now displays more of it's settings.
+
+* I added some better help prompts to the bar and slot tooltips, to make it easier for new users to 
+  jump in and start using FarmIt right away.
+
+* Updated LibGLHF to version 1.3
+
+* As always, please let me know if you encounter any lua errors. Send me a ticket on CurseForge at:
+  http://wow.curseforge.com/addons/farm-it/tickets/
+
+----------------------------------------------------------------------------------------------------
+
+v2.32
+* Updated documentation: Revised addon description, and moved the user guide into it's own file.
+  The latest version of the user guide can be found online at: 
+  http://wow.curseforge.com/addons/farm-it/pages/user-guide/
+  Complete command-line documentation can be found at: 
+  http://wow.curseforge.com/addons/farm-it/pages/commands/
+
+* Updated LibGLHF to version 1.1.
+
+----------------------------------------------------------------------------------------------------
+
+v2.31
+* Updated for the 6.1 content patch. (WoW 60100)
+
+* Startup output cleanup.
+
+* Added bar number to text feedback when locking/unlocking individual bar position.
+
+* Fix: Global position locking and unlocking now properly updates the individual lock state of all 
+  existing bars to reflect the current global lock state.
+
+* Added wildcard search to DB find method.
+
+----------------------------------------------------------------------------------------------------
+
+v2.3
+* TOC update for the Warloards of Draenor expansion. (WoW 60300) 
+  I haven't had any errors running FarmIt2 in WoD so far, if you encounter any problems please 
+  submit a ticket on CurseForge:  http://wow.curseforge.com/addons/farm-it/
+
+* Increased max number of bars allowed, from 12 to 24.
+
+* FarmIt3 is under active development and will hopefully be in open beta soon!
+
+----------------------------------------------------------------------------------------------------
+
+v2.29
+* Updated for the 5.1 content patch. (WoW 50100)
+
+* Currency tooltips have been improved. The "Currency" section of FarmIt's in-game help has also 
+  been updated.
+
+* Cleaned up some of the currency tracking code a bit and fixed a couple minor bugs.
+
+* New Feature: Localization support. FarmIt related information in item tooltips has been translated
+  into 9 languages. Please submit translation feedback as a ticket on CurseForge:
+  http://wow.curseforge.com/addons/farm-it/
+
+----------------------------------------------------------------------------------------------------
+
+v2.28
+* Fix: Sanity check on the "previous version number" saved variable, added to FI_Init().
+
+* Code cleanup: Generic Lua "helper" functions I've written while developing FarmIt have been moved 
+  into a separate file 'Libs\LibGLHF.lua'.
+
+----------------------------------------------------------------------------------------------------
+
+v2.27
+* Updated for the 5.0.5 patch: Mists of Pandaria. (WoW 50001)
+
+----------------------------------------------------------------------------------------------------
+
+v2.26
+* Fix: Corrected a bug in the "currency update" event trigger.
+
+----------------------------------------------------------------------------------------------------
+
+v2.25
+* Fix: The missing FI_SV_CONFIG error being caused by FI_DB.rebuild() on first run for new installs 
+  has been resolved. (Thanks for the error logs!) Sorry I missed actually nailing this one, it only 
+  occurs if you are running FarmIt for the first time on that machine so it wasn't happening to me.
+
+* Enhancement: If you enter a bogus item id using the manual item entry method (ctrl+right-click), 
+  that slot's tooltip now indicates the result of the server query more clearly.
+
+* Enhancement: The 'currency' command now has more options, please see the in game "Commands" help.
+
+----------------------------------------------------------------------------------------------------
+
+v2.24
+* New Feature: Manual item input! You can now set an item button to any item, even if you don't 
+  actually have it. (Yay, we can finally cross this one off the feature request list. hehe) 
+  Ctrl+Right-Click any slot on an item bar and type any numeric item ID you want. This works great 
+  with any addon that shows you the numeric "Item ID" of items. 
+  
+  NOTE: I have written an item tooltip addon called "iTip" which adds these Item ID's to all item 
+  tooltips! iTip is available for download at:  http://www.curse.com/addons/wow/itip
+
+* New: A bunch more built-in item bar templates have been added, thanks to community input on 
+  CurseForge. (Nice work tednik!) Let me know if you spot anything that needs fixing/updating.
+
+* Removed: The numbers attached to the bottom of the backpack for showing currency goals have been 
+  replaced by the new Currency Bar, which can be positoned anywhere on the screen.
+
+* Enhancement: Finally wrote a function to handle new/missing config vars properly. From now on, new 
+  config values will get added to the player's saved variables without affecting other types of data.
+
+* Fix: Corrected the "missing FI_SV_CONFIG" login error people have been reporting. Config variables 
+  will now be initialized properly (see above) when updating from an older version of FarmIt, or 
+  during a new install.
+
+* Fix: Loading an item template on a bar with existing items now empties the target bar first, 
+  instead of partially overwriting it.
+
+* Misc code cleanup.
+
+* Confession: Regrettably, I rushed the last couple builds of FarmIt, and consequently they have not 
+  been up to my normal standards for quality control. I apologize about the errors people have been 
+  experiencing, and I want to thank everyone for your patience while I got caught up on testing. This 
+  build looks good on my end, so hopefully it works well for everyone else now too.  -CHiLLZ
+
+----------------------------------------------------------------------------------------------------
+
+v2.23
+* Enhancement: The Currency HUD has been upgraded to be more of a full-featured FarmIt bar.
+  To move the currency bar: Shift-Click anywhere on the Currency HUD and drag it.
+
+* Enhancement: You can now set farming objectives using the currency bar. To set a goal amount: 
+  Right-Click a currency on the currency HUD, and type an objective amount into the edit box that 
+  appears below. The objective will then appear at the bottom of the currency tooltips.
+
+* Fix: Reverted the extra "missing config" detection implemented in v2.22. Sorry, it actually caused 
+  more problems than it solved.
+
+* Fix: Added some missing variables to the function that applies visual style rules to the bars. Also,
+  changing the style using the "/farmit style" command now includes a UI reload.
+
+* Fix: Corrected some errors in the "minimal" visual style.
+
+----------------------------------------------------------------------------------------------------
+
+v2.22
+* New Feature: FarmIt now provides a "Currencies HUD", making it more convenient to actively monitor 
+  the currencies you are tracking on your backpack. This HUD (Heads Up Display) frame lets you see 
+  how many points you have at a glance, without having to open your backpack and look. To turn this 
+  frame on/off at any time, just type:  /farmit currency hud
+
+* Fix: Some users were getting Lua errors caused by missing config values. This is usually caused by
+  WoW lagging during the loading screen and failing to actually load saved variables. I added a check 
+  that will do a silent config rebuild if necessary, instead of the user having to. 
+
+* Fix: Attempting to load a user created template no longer generates a Lua error.
+
+* Fix: Item counts should now update properly when going from a positive number to zero.
+
+* Fix: Corrected some broken code in the rebuild command.
+
+----------------------------------------------------------------------------------------------------
+
+v2.21
+* Enhancement: Shift-clicking the anchor area of a bar will now lock/unlock it for moving. The current 
+  state of a bar's lock setting is now shown in it's tooltip.
+
+* Fix: Corrected a bug introduced v2.2, where moving an item to a different slot made a copy of it 
+  instead of moving it.
+
+* Fix: Individual bars should now stay hidden like they are supposed to.
+
+* Code cleanup.
+
+----------------------------------------------------------------------------------------------------
+
+v2.2
+* Updated for the 4.3 content patch. (WoW 40300)
+
+* New Feature: FarmIt now tracks reward currencies! When you use WoW's built-in "Show on Backpack" feature,
+  FarmIt will automatically begin tracking your "watched" currencies. To set a currency farming goal, simply 
+  right-click on the currency amount shown at the bottom of your backpack. Once a currency goal has been set, 
+  the objective amount will appear at the bottom of your backpack, right beneath the corresponding currency.
+  Currency objective indicators follow the same color scheme as regular item objectives.
+
+* New Feature: All notifications have been standardized and are managed through the new "alerts" command. 
+  Available options are:  chat, screen, sound. For example, typing "/farmit alerts screen" will toggle 
+  on-screen notifications on/off. To see the current state of all alerts settings, simply type "/farmit alerts" 
+  with no option specified.
+
+* Enhancement: Progress messages now include both the running total, and a color coded incremental amount.
+
+* Enhancement: The color of some item icons was making the buttons difficult to read at times, so 
+  FarmIt's item tooltips now contain all the information displayed on the actual item slot. Also, 
+  the way some things are displayed on the item buttons has been improved. If you set a button to 
+  include your bank inventory, the item count no longer turns yellow; instead a 
+  four-point gold border shows up on the corners of the button to indicate "bank = true".
+
+* Enhancement: While I was implementing the new currency tracking feature, the code related to objective 
+  progress tracking has undergone significant optimization. Also, the objective amount on item 
+  buttons starts out gold colored (instead of red) to more closely match the behavior of WoW quest tracking. 
+  Objective amounts still turn green when the goal has been reached.
+
+* Enchancement: You no longer have to specify a bar number when removing a group. You still can, but
+  it is no longer required. If no bar number is specified, FarmIt will remove the last bar that was 
+  created (the highest number). This allows for easier use of macros to add and remove bars, etc.
+
+* Enhancement: Visual themes are now more useful/integrated than before. If you feel like making your 
+  own skin for FarmIt, you now have a greater degree of control. Look in "FarmIt2_Style.lua" for 
+  example "skins". See the "style" command description for more information on how to apply your style.
+
+* Enhancment: To show a list of all available bar ID's, you can now type:  /farmit group list
+  This is particularly useful when you have mutiple bars and some of them have been hidden individually.
+
+* Fix: The output of "/farmit tpl list" has been cleaned up, and will no longer cause a lua error if 
+  there are no user created bar templates.
+
+* Fix: User templates are no longer wiped out when performing a "/farmit reset". (Sorry about that!)
+
+* Fix: Added a check to prevent causing a Lua error by attempting to toggle a bar that doesn't exist.
+
+* Fix: Updated documentation, replacing references to {bar#} with simply {#} to avoid confusion 
+  regarding proper command syntax. Refer to the in-game documentation itself for further explanation.
+
+----------------------------------------------------------------------------------------------------
+
+v2.19
+* Enhancement: Now checks to see if my item tooltip addon "iTip" is running and lets iTip handle 
+  adding extra item related information to FarmIt's item tooltips.
+
+----------------------------------------------------------------------------------------------------
+
+v2.18
+* Updated for the 4.2 content patch. (WoW 40200)
+
+* Fix: Corrected a visual glitch caused by swapping places between two items, when one of them has 
+  an objective. The objective indicator on the button with no objective now gets cleared properly.
+
+----------------------------------------------------------------------------------------------------
+
+v2.17
+* Some minor bug fixes and code optimization/cleanup.
+
+----------------------------------------------------------------------------------------------------
+
+v2.16
+* Fix: Added a check to the objective completion code to make sure anytime the quantity is greater 
+  than the objective, the objective is always flagged as complete in the database.
+
+----------------------------------------------------------------------------------------------------
+
+v2.15
+* Enhancement: The "objective abandoned" message now responds differently depending on whether the 
+  objective has been completed.
+
+* Fix: Added a check to prevent FarmIt from incorrectly telling you it is "using" an item if you 
+  don't currently have that item in your inventory, or if the item has no "use" action.
+
+* Fix: Fixed a bug that was causing item counts to not get updated under some circumstances.
+
+* Fix: Corrected an error in the item count routine regarding the comparison of the old quantity 
+  and the new quantity. This was preventing other features (such as on-screen notifications) from 
+  being triggered.
+
+* Fix: Objective success notifications now trigger correctly upon item count being equal to the 
+  objective amount.
+
+* Fix: Moving an item to a slot that was already occupied was causing both buttons to contain the 
+  selected item (instead of trading places). The item being moved no longer commandeers both 
+  buttons.
+
+* Fix: The inclusion of Blizzard's secure button templates (for "use item" functionality) appears 
+  to be preventing item buttons from being hidden/shown while in combat. Consequently, If you use 
+  the quick-size buttons during combat, the change will be applied once you are out of combat.
+
+* Fix: FarmIt now remembers custom alpha settings like it should.
+
+----------------------------------------------------------------------------------------------------
+
+v2.14
+* Updated for the 4.1 content patch. (WoW 40100)
+
+* Placed an announcement in the config panel regarding feedback on the v2.13 "missing icons" fix.
+
+* Enhancement: Added a command alias. Now either "/farmit options" or "/farmit config" both work.
+
+----------------------------------------------------------------------------------------------------
+
+v2.13
+* New: Skinning templates added!
+
+* Fix: Missing item icons... still! (What the flux?!)
+  
+  First of all let me say- the way FarmIt loads the item icons is simple, uses the WoW API as it 
+  should, and works 100% of the time in my testing. Yes, I know... famous last words, heh. 
+  But seriously, the problem lies with the Blizzard functions that are supposed to return the image 
+  path, randomly failing to return *anything*. This seems to happen most during the initial login 
+  process. As far as I can tell, this is most likely caused by one (or both) of the following
+  conditions: 
+  
+    1) The user has a large number of addons enabled, so "player entering world" time (which is 
+    historically notorious for being painfully laggy anyway) chokes and causes that first pass
+    of item icon queries to "time out".
+  
+    2) As WoW players, we all know some servers are more reliable than others. Client/server issues
+    are a part of life in networked gaming, and if condition #1 is present, excessive server lag 
+    will only make things worse. In fact- due to those kinds of circumstancial factors, I 
+    purposely test my code on 2 different servers.
+  
+  Hmm, this is really long for a change log entry, lol. Anyway, here's the bottom line: 
+  Rather than make sweeping changes to the way FarmIt works just because the WoW API isn't doing its 
+  job reliably, I added some simple logic to police for missing item icons and attempt to restore 
+  them while you are playing. This code was inserted into the function that is responsible for 
+  updating the item counts every time your inventory changes, so this should go a long way toward 
+  helping those who are experiencing this problem regularly.
+
+* Enhancement: Since the update function had some work added to it, I went back over it and made 
+  sure it is being smart about only doing what it needs to do each time it runs.
+
+* Some code cleanup and a few minor bug fixes.
+
+----------------------------------------------------------------------------------------------------
+
+v2.12
+* New Feature: Right-Click performs "use" action on actual inventory item.
+  
+  Since the last update was (imo) the first really stable build of FarmIt2, I finally felt like I 
+  had time to do some R&D. So I went straight to work on what has easily been the most popular 
+  outstanding feature request: Right-Click "uses" the actual item. Many people (including myself) 
+  have wanted this feature for a long time, so I am VERY happy to add it to the list of handy 
+  things that FarmIt helps us do!
+  
+* Enhancement: Added "Button ID" to tooltips to correlate with the "bank = true/false" messages.
+
+----------------------------------------------------------------------------------------------------
+
+v2.11
+* Fix: Resolved an issue where adding a new bar was causing the objective numbers on existing bars 
+  to turn white.
+
+* Enhancement: New command- '/farmit alpha {#} {bar#}'
+  Adjusts the opacity of the whole addon, or a single bar if bar number is included.
+
+----------------------------------------------------------------------------------------------------
+
+v2.1
+* This build has looked pretty solid in testing, so I am going to go ahead and graduate FarmIt2 
+  from beta status so more people will receive the update. Please post any high priority fixes and 
+  enhancements so I can finish the GUI config panel. 
+  Post general feedback at:  http://wow.curse.com/downloads/wow-addons/details/farm-it.aspx
+  Submit bugs and feature requests on CurseForge:  http://wow.curseforge.com/addons/farm-it/
+
+* Re-factor: Finally sat down and wrote a data abstraction layer. It's not all-inclusive, but it's 
+  a good start. This greatly enhances the stability of the current feature set, and paves the way 
+  for data dependent features such as saved item sets, session statistics, etc.
+
+* New Feature: Farming Templates (Saved Item Sets)
+  Now you can save all the items on a FarmIt bar as a "farming template" to easily use again later.
+  Templates can be loaded onto any FarmIt bar; if there is a difference in size between the amount 
+  of items in the template, and the size of the bar- the bar slots will automatically adjust to 
+  accommodate the template. For details on template related commands, please refer to the "Commands"
+  page of FarmIt's in-game help (under '/farmit tpl').
+  Note: I plan to provide pre-made templates for all relevant professions. This release has built-in
+  templates for mining and herbalism. I will add more in future updates.
+
+* New Feature: Button tooltips have been significantly improved. Item buttons now display the 
+  standard game tooltip for an item, including monetary values inserted by addons like Auctioneer, 
+  Enchantrix, Auctionator, etc.
+
+* New Feature: The help and configuration windows have been consolidated into one central control 
+  panel located in the built-in game settings area:  Game Menu > Interface > Addons > FarmIt
+
+* Enhancement: Progress notifications now reflect their associated objective, if set.
+
+* Fix: This update should resolve the "missing item icons" issue. (Thanks Cheezel)
+
+* Fix: Adding and removing bars is now working as intended.
+
+* Fix: Moving an item from one bar to another works properly now.
+
+* Deprecated: The item names that sit out beside the buttons have been removed.
+
+* Lots of code cleanup along the way.
+
+----------------------------------------------------------------------------------------------------
+
+v2.0 beta
+* Updated for the 4.0 content patch, and the Cataclysm expansion. (WoW v4.0.3a)
+
+* FarmIt2 is a complete rewrite from the ground up. Things may look pretty similar to the naked eye,
+  but many, many hours have been put into laying a new foundation for FarmIt2. Knowing that I would
+  be rewriting most of the code from scratch, I made a concerted effort to employ the latest WoW API
+  and Lua code standards.
+
+* NOTE: All configuration is done through the command line in this release. Type '/farmit' for help.
+  A graphical options panel will follow in a 2.x update. While rewriting the entire mod, trying to
+  do a brand new configuration window at the same time would have slowed down development
+  drastically and I really wanted to get this 2.0 beta release out there for people to start using 
+  and get some feedback on it.
+
+* New Feature: Yes folks, it's true... *multiple item bars* has finally arrived! /dance
+  Each item bar or "button group" is numbered. Many of FarmIt's features are now per-group settings
+  via the bar number. To try out this new functionality, use: 
+    /farmit group add
+  When removing a group, include the bar number: 
+    /farmit group remove 2
+
+* New Feature: FarmIt now has two visual styles to choose from: 
+    "default" - Traditional style that matches the stock WoW interface.
+    "minimal" - A minimalistic look that goes better with addons like Bartender.
+  I've had requests for ButtonFacade compatibility, which I honestly haven't had the time to tackle.
+  A choice of skins should be better than nothing for now, and I will probably revisit this later.
+
+* Item count routines are now up to 12 times faster than before.
+
+* Many other internal improvements in the way FarmIt does what it does, too numerous to list.
+
+----------------------------------------------------------------------------------------------------
+
+v1.7
+* Updated for the 3.0 content patch and the Wrath of the Lich King expansion. (WoW v3.0.3)
+
+* New Feature: The options panel now offers the ability to display on-screen progress messages 
+  which notify you each time you loot an item that is being tracked.
+
+----------------------------------------------------------------------------------------------------
+
+v1.61
+* Fixed bar anchor and tooltip offering an unavailable feature.
+
+* Cleaned up a display issue with having the help window and options panel open at the same time.
+
+----------------------------------------------------------------------------------------------------
+
+v1.6
+* Updated for 2.4.0 WoW patch.
+
+* New Feature: FarmIt now has an options panel for easier customization!
+
+* Due to the new options interface, the text commands have been simplified. 
+  To see the current list of commands, type: /farmit
+
+* Saved variable data structure and related functions have been significantly improved.
+
+* Minimum number of slots changed to zero.
+
+* New Option: Mod position may now be locked/unlocked to prevent accidentally moving it.
+
+* New Option: You can now adjust the scale of the item slots. (50-150%)
+
+* New Option: Spacing between the slots can now be adjusted.
+
+* New Option: Transparency of item slot elements are now adjustable.
+
+----------------------------------------------------------------------------------------------------
+
+v1.5
+* Updated for 2.3.0 WoW patch.
+
+* New Feature: You can now click on a slot to pickup an item and move it to another slot.
+  The entire slot will glow yellow when selected (picked up). Just click the destination slot to move it.
+  If the destination slot already has an item in it, they will trade places.
+
+* New Feature: When you reach your farming objective for a given slot, you will now receive an 
+  on-screen notification just like the Blizzard quest objective notification.
+
+* Moving an item into an already occupied slot will now cause the items to trade places
+  instead of overwriting the destination slot.
+
+* Moved help information from chat message to its own popup window.
+
+* Various fixes and optimizations from version 1.4 beta testing.
+
+v1.4 beta
+* Improved Feature: FarmIt is now able to include your bank inventory without needing to be at the bank!
+  Shift-click an item slot to toggle between local count (bags) and the combined total (bags + bank). 
+  This feature can be enabled/disabled individually for each item slot.
+  The item count will turn yellow to indicate when bank search is enabled for that item slot.
+
+* New Feature: You can now change the bar orientation! 
+  Ctrl-click the base of the bar to toggle between vertical and horizontal orientation.
+  When in horizontal mode, the item text labels are automatically hidden. 
+  Item text is automatically re-enabled when you switch back to vertical mode.
+  The alignment of which direction the slots grow out can be changed via the the same method used to 
+  set the alignment of the item text labels. (Shift-click the base of the bar)
+
+* New Feature: Set farming objectives for each item you are tracking.
+  Ctrl-click an item slot to enter a target quantity for that item. 
+  Current item counts are displayed in the top-left corner of each slot now, and your objective in the bottom-right corner.
+  The objective indicator turns green when your target quantity has been met.
+
+* Optimized item count method via Blizzard API.
+
+----------------------------------------------------------------------------------------------------
+
+v1.3
+* New Feature: FarmIt now searches the keyring. 
+* New Feature: FarmIt will now search your bank space if you are at the bank. 
+
+----------------------------------------------------------------------------------------------------
+
+v1.2
+* Bugfix: Mod was still failing to stay hidden after a player logs off/on.
+
+----------------------------------------------------------------------------------------------------
+
+v1.1
+* New Feature: You can now customize how many item slots there are. (Up to 12) 
+* Major XML changes-- now uses dynamic frame creation.
+* Item slots retain what item they were tracking, regardless of how many slots are visible. 
+* Many Lua code improvements.
+
+----------------------------------------------------------------------------------------------------
+
+v1.0
+* Fixed a bug where the mod was failing to stay hidden after a player logs off/on.
+
+----------------------------------------------------------------------------------------------------
+
+v0.9
+* New Feature: Slash command interface.
+  FarmIt now supports the following slash commands: 
+    /farmit help   --  Shows a help message.
+    /farmit reset  --  Resets the mod to default settings.
+    /farmit        --  Hide/Show the entire mod.
+
+* Mouse interactivity has been simplified due to the new slash commands.
+* Fixed a bug that was causing the new item slots not to update their counts.
+* Improved the mod "reset" function.
+* Fixed a minor xml issue.
+
+----------------------------------------------------------------------------------------------------
+
+v0.8
+* Updated for 2.1.0 WoW patch.
+* New Feature: Shift-Click now toggles display of item text.
+* New Feature: Ctrl-click now toggles item text alignment between the left/right side of the mod.
+* Alt-click now resets the mod.
+* By popular demand, increased the number of item slots.
+
+----------------------------------------------------------------------------------------------------
+
+v0.7
+* Got rid of the little drag anchor at the bottom and made the mod border draggable instead.
+
+----------------------------------------------------------------------------------------------------
+
+v0.6
+* First official release to the public!
+
+----------------------------------------------------------------------------------------------------
+
+v0.5 beta
+* New Feature: Now saves (per character) what items you were tracking.
+* Ctrl-click on the drag anchor area now resets the mod.
+* Improved itemID matching.
+* Sound feedback on click events.
+
+----------------------------------------------------------------------------------------------------
+
+v0.4 beta
+* Fixed a "partial match" bug in the search/count method.
+* Added manual "refresh" function to click-zone at bottom of mod.
+* Automatic re-count now triggers correctly when looting.
+
+----------------------------------------------------------------------------------------------------
+
+v0.4 alpha
+* First working version.

@@ -1,0 +1,61 @@
+﻿----------------------------------------------------------------------------------------------------
+ User Guide
+----------------------------------------------------------------------------------------------------
+
+The latest version of this guide can be found online at: 
+http://wow.curseforge.com/addons/farm-it/pages/user-guide/
+
+Complete command-line documentation can be found at: 
+http://wow.curseforge.com/addons/farm-it/pages/commands/
+
+--------------------------------------------------------------------------------
+
+For in game help, type:  /farmit
+
+Due to the nature of FarmIt's purpose, most settings are saved on a per-character basis since different characters will have different professions, etc. Statistical data and item related information such as farming templates (saved sets of items) are shared between all characters. 
+
+
+[ Item Buttons ]
+
+Place any item from your inventory into one of FarmIt's bar slots to keep track of how many you have. Click on an occupied slot to select its contents and move them to another slot. If the destination slot has an item in it already, the items will trade places.
+
+Right-click a slot to USE the item. (For combining scraps into hides, etc.)
+
+Shift+Click the slot to have it include your bank inventory, you do *not* need to be at the bank for this to work! When 'include bank' is enabled, a four-point gold border will appear around the item button. The "bank included" state is also visible by mousing over the item slot.
+
+Shift+Right-click a slot to clear it.
+
+Ctrl+Click a slot to set a farming objective for that item. This works similar to WoW quest tracking. FarmIt will notify you each time you progress toward your objective, and upon reaching your goal. The goal number will turn green once it has been reached.
+
+Ctrl+Right-click any bar slot to manually type in a numeric "Item ID". This works great with addons like iTip which add extra information to all item tooltips.
+
+
+[ Bars ]
+
+To move a bar, click and drag the anchor (numbered tab) at the end of the bar. To lock it in place, Shift-click the bar anchor. To lock all bars at once, type: "/farmit lock"
+
+Right-Click the bar anchor to open FarmIt's help page.
+
+Shift+Right-Click the bar anchor to show a full list of configuration commands.
+
+To grow/shrink the number of *visible* slots on a bar, click the 'quick size' buttons (-/+). To permanently add or remove bar slots, see the "group size" documentation on the "Commands" page.
+
+FarmIt bars can be scaled, made transparent, or hidden completely. See the "Commands" page for more information.
+
+
+[ Templates ]
+
+You can save all the items on a FarmIt bar as a "farming template" to easily track those items again later. Saved farming templates can be loaded onto any FarmIt bar. If there is a difference between the amount of items in the template, and the size of the bar, the bar will automatically adjust to accommodate the template. 
+
+For details on how to save/load your own templates, please refer to the "Commands" page of FarmIt's in-game help.
+
+
+[ Currency Tracking ]
+
+When you use WoW's built-in "Show on Backpack" feature to watch a currency, FarmIt will automatically track the selected currencies and (optionally) display a "Currency HUD" on screen. You can use this currency bar to set farming objectives and monitor your progress. Use the command "/farmit currency hud" to toggle display of the on-screen currency bar, or just "/farmit currency" to turn currency tracking on/off entirely.
+
+To set a farming goal for a currency, simply right-click the currency amount on FarmIt's currency bar (or at the bottom of your backpack). Once a currency objective has been set, the goal amount will appear in the currency bar tooltips, and the currency tooltips at the bottom of your backpack.
+
+Currency objectives follow the same color scheme as regular item objectives, ie: the objective turns green when the goal has been reached.
+
+To move the currency bar, hold the Shift key and then drag the bar where you want it.

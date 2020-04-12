@@ -1,0 +1,67 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+	<Script file="FarmIt2.lua" />
+
+	<Frame name="FI_PARENT" frameStrata="LOW" parent="UIParent" hidden="false">
+		<Size x="2" y="2"/>
+		<Anchors>
+			<Anchor point="CENTER" realativeTo="UIParent" relativePoint="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				FI_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				FI_OnEvent(self, event, ...);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<EditBox name="FI_TPL_Editbox" frameStrata="DIALOG" toplevel="true" hidden="true" virtual="true">
+		<Scripts>
+		</Scripts>
+		<FontString inherits="ChatFontNormal" bytes="256"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left2">
+					<Size>
+						<AbsDimension x="32" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\ChatFrame\UI-ChatInputBorder-Right2">
+					<Size>
+						<AbsDimension x="32" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentMid" file="Interface\ChatFrame\UI-ChatInputBorder-Mid2" horizTile="true">
+					<Size>
+						<AbsDimension x="0" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentLeft" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parentRight" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+		</Frames>
+	</EditBox>
+
+</Ui>
