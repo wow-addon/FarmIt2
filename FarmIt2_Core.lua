@@ -721,7 +721,7 @@ function FI_Progress( data, silent )
 	if (data.count > data.lastcount) then
 		-- increase
 		suffix = "(|cFF00FF00+"..data.count - data.lastcount.."|r)";
-		sound = "igBackPackCoinSelect";
+		sound = 864; -- igBackPackCoinSelect
 	elseif (data.count < data.lastcount) then
 		-- decrease
 		suffix = "(|cFFFF0000-"..data.lastcount - data.count.."|r)";
