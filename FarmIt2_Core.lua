@@ -770,7 +770,7 @@ function FI_Progress( data, silent )
 			------------------------------------------------------------
 			color = FI_SV_CONFIG.Colors.success;
 			status = "Objective complete!";
-			sound = "QUESTCOMPLETED";
+			sound = 619; -- QUESTCOMPLETED
 
 			-- update notification flag
 			data = FI_DB.update(FI_SVPC_DATA[database], {id = data.id}, {success = true});
