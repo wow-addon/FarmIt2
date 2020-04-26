@@ -4,7 +4,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 
 	<Script file="FarmIt2_Button.lua" />
 	
-	<Frame name="FI_TPL_Button" inherits="ItemButtonTemplate, SecureActionButtonTemplate" virtual="true">
+	<Frame name="FI_TPL_Button" inherits="SecureActionButtonTemplate" virtual="true">
 		<Size x="37" y="37" />
 		<Anchors>
 		</Anchors>
