@@ -1,4 +1,4 @@
-﻿Title: FarmIt
+Title: FarmIt
 Description: A customizable inventory tracker for World of Warcraft.
 Author: CHiLLZ <chillz@gmail.com>
 License: Copyright 2006-2016, all rights reserved.

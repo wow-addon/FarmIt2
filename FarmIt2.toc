@@ -1,4 +1,4 @@
-﻿## Interface: 70100
+## Interface: 70100
 ## Title: FarmIt2
 ## Notes: A customizable inventory tracking tool.|n|cFF33CCFFBy CHiLLZ|r
 ## Author: CHiLLZ <chillz@gmail.com>
