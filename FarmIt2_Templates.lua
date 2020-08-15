@@ -5,13 +5,13 @@
 These are the default item templates that FarmIt includes.
 Items are grouped by the part of the game in which they are obtained.
 To add your own: set up a bar in-game, then use the following commands:
-	
-	/farmit tpl list
-	/farmit tpl save {bar#} name
-	/farmit tpl load {bar#} name
-	/farmit tpl delete name
-	/farmit tpl rename name newname
-	
+  
+  /farmit tpl list
+  /farmit tpl save {bar#} name
+  /farmit tpl load {bar#} name
+  /farmit tpl delete name
+  /farmit tpl rename name newname
+  
 Note: To simplify input parsing, spaces are not allowed in custom template names.
 
 --------------------------------------------------------------------------------
@@ -46,18 +46,18 @@ FI_TPL = {};
 
 -- categories
 FI_TPL.Templates = {
-	["WOW"] = {},
-	["TBC"] = {},
-	["WOTLK"] = {},
-	["CATA"] = {},
+  ["WOW"] = {},
+  ["TBC"] = {},
+  ["WOTLK"] = {},
+  ["CATA"] = {},
 }
 
 -- list order
 FI_TPL.Order = {
-	[1] = "WOW",
-	[2] = "TBC",
-	[3] = "WOTLK",
-	[4] = "CATA",
+  [1] = "WOW",
+  [2] = "TBC",
+  [3] = "WOTLK",
+  [4] = "CATA",
 }
 
 --------------------------------------------------------------------------------

@@ -18,11 +18,11 @@ FI_CONFIG.Panel.name = "FarmIt";
 InterfaceOptions_AddCategory(FI_CONFIG.Panel);
 
 FI_CONFIG.Pages = {
-	CreateFrame("Frame", "FI_Panel_1", FI_CONFIG.Panel),
-	CreateFrame("Frame", "FI_Panel_2", FI_CONFIG.Panel),
-	CreateFrame("Frame", "FI_Panel_3", FI_CONFIG.Panel),
-	CreateFrame("Frame", "FI_Panel_4", FI_CONFIG.Panel),
-	CreateFrame("Frame", "FI_Panel_5", FI_CONFIG.Panel),
+  CreateFrame("Frame", "FI_Panel_1", FI_CONFIG.Panel),
+  CreateFrame("Frame", "FI_Panel_2", FI_CONFIG.Panel),
+  CreateFrame("Frame", "FI_Panel_3", FI_CONFIG.Panel),
+  CreateFrame("Frame", "FI_Panel_4", FI_CONFIG.Panel),
+  CreateFrame("Frame", "FI_Panel_5", FI_CONFIG.Panel),
 };
 
 FI_CONFIG.Pages[1]["name"] = "General";
@@ -62,117 +62,117 @@ function FI_CONFIG.Set()
 end
 
 function FI_Alert_Info()
-	local output = {};
-	output[1] = "Alerts settings:";
-	
-	table.sort(FI_SV_CONFIG.Alerts);
-	for key,val in pairs(FI_SV_CONFIG.Alerts) do
-		local setting;
-		if val then setting = "ON"; else setting = "OFF"; end
-		
-		table.insert(output, "  "..key.." = "..setting);
-	end
-	
-	FI_Message(output);
+  local output = {};
+  output[1] = "Alerts settings:";
+  
+  table.sort(FI_SV_CONFIG.Alerts);
+  for key,val in pairs(FI_SV_CONFIG.Alerts) do
+    local setting;
+    if val then setting = "ON"; else setting = "OFF"; end
+    
+    table.insert(output, "  "..key.." = "..setting);
+  end
+  
+  FI_Message(output);
 end
 
 function FI_Toggle_Alert( arg )
-	local options = {};
-	for key,val in pairs(FI_DEFAULTS.SV.CONFIG.Alerts) do
-		table.insert(options, key);
-	end
-	
-	local msg;
-	if tContains(options, arg) then
-		local result;
-		
-		FI_SV_CONFIG.Alerts[arg] = LIB.toggle( FI_SV_CONFIG.Alerts[arg] );
-		if FI_SV_CONFIG.Alerts[arg] then result = "ON"; else result = "OFF"; end
-		
-		-- customized response messages
-		if (arg == "chat") then
-			msg = "Chat window alerts:  "..result;
-		elseif (arg == "screen") then
-			msg = "On-screen alerts:  "..result;
-		elseif (arg == "sound") then
-			msg = "Alert sounds:  "..result;
-		else
-			msg = "Input error!";
-		end
-		
-	else
-		msg = "Invalid input. Options for 'alert' are:  "..table.concat(options,", ");
-	end
-	
-	-- response
-	FI_Message(msg);
+  local options = {};
+  for key,val in pairs(FI_DEFAULTS.SV.CONFIG.Alerts) do
+    table.insert(options, key);
+  end
+  
+  local msg;
+  if tContains(options, arg) then
+    local result;
+    
+    FI_SV_CONFIG.Alerts[arg] = LIB.toggle( FI_SV_CONFIG.Alerts[arg] );
+    if FI_SV_CONFIG.Alerts[arg] then result = "ON"; else result = "OFF"; end
+    
+    -- customized response messages
+    if (arg == "chat") then
+      msg = "Chat window alerts:  "..result;
+    elseif (arg == "screen") then
+      msg = "On-screen alerts:  "..result;
+    elseif (arg == "sound") then
+      msg = "Alert sounds:  "..result;
+    else
+      msg = "Input error!";
+    end
+    
+  else
+    msg = "Invalid input. Options for 'alert' are:  "..table.concat(options,", ");
+  end
+  
+  -- response
+  FI_Message(msg);
 end
 
 function FI_Toggle_Currency( setting, input, silent )
-	local options = LIB.table.keys(FI_SVPC_CONFIG.Currency);
-	local msg;
-	
-	if setting then
-		-- validate input
-		if (FI_SVPC_CONFIG.Currency[setting] ~= nil) then
-			-- config check
-			if (FI_SVPC_CONFIG.Currency.tracking == true) then
-				-- process input
-				local value;
-				
-				if (type(FI_SVPC_CONFIG.Currency[setting]) == "boolean") then
-					-- change boolean setting
-					FI_SVPC_CONFIG.Currency[setting] = LIB.toggle(FI_SVPC_CONFIG.Currency[setting]);
-					value = strupper(tostring(FI_SVPC_CONFIG.Currency[setting]));
-				
-				elseif input and (type(FI_SVPC_CONFIG.Currency[setting]) == "number") then
-					-- change numeric setting
-					FI_SVPC_CONFIG.Currency[setting] = LIB.round(tonumber(input),2);
-					value = FI_SVPC_CONFIG.Currency[setting];
-				
-				elseif input then
-					-- change string setting
-					FI_SVPC_CONFIG.Currency[setting] = tostring(input);
-					value = FI_SVPC_CONFIG.Currency[setting];
-				else
-					-- input error
-				end
-				
-				-- output
-				msg = "Currency bar:  "..setting.." = "..value;
-			
-			else
-				msg = "Currency tracking is currently disabled. To enable it, type:  /farmit currency";
-			end
-		else
-			msg = "Invalid input. Options for 'currency' are:  "..table.concat(options,", ");
-		end
-	
-	else
-		-- toggle main setting
-		FI_SVPC_CONFIG.Currency.tracking = LIB.toggle(FI_SVPC_CONFIG.Currency.tracking);
-		
-		if (FI_SVPC_CONFIG.Currency.tracking == true) then
-			FI_SVPC_CONFIG.Currency.show = true;
-		else
-			FI_SVPC_CONFIG.Currency.show = false;
-		end
-		
-		msg = {};
-		msg[1] = "Currency tracking = "..strupper(tostring(FI_SVPC_CONFIG.Currency.tracking));
-		msg[2] = "Currency bar:  show = "..strupper(tostring(FI_SVPC_CONFIG.Currency.show));
-	end
-	
-	-- update interface
-	FI_Update_Currency();
-	
-	-- output
-	if (not silent) then
-		FI_Message(msg);
-	end
-	
-	-- return current state
-	return FI_SVPC_CONFIG.Currency;
+  local options = LIB.table.keys(FI_SVPC_CONFIG.Currency);
+  local msg;
+  
+  if setting then
+    -- validate input
+    if (FI_SVPC_CONFIG.Currency[setting] ~= nil) then
+      -- config check
+      if (FI_SVPC_CONFIG.Currency.tracking == true) then
+        -- process input
+        local value;
+        
+        if (type(FI_SVPC_CONFIG.Currency[setting]) == "boolean") then
+          -- change boolean setting
+          FI_SVPC_CONFIG.Currency[setting] = LIB.toggle(FI_SVPC_CONFIG.Currency[setting]);
+          value = strupper(tostring(FI_SVPC_CONFIG.Currency[setting]));
+        
+        elseif input and (type(FI_SVPC_CONFIG.Currency[setting]) == "number") then
+          -- change numeric setting
+          FI_SVPC_CONFIG.Currency[setting] = LIB.round(tonumber(input),2);
+          value = FI_SVPC_CONFIG.Currency[setting];
+        
+        elseif input then
+          -- change string setting
+          FI_SVPC_CONFIG.Currency[setting] = tostring(input);
+          value = FI_SVPC_CONFIG.Currency[setting];
+        else
+          -- input error
+        end
+        
+        -- output
+        msg = "Currency bar:  "..setting.." = "..value;
+      
+      else
+        msg = "Currency tracking is currently disabled. To enable it, type:  /farmit currency";
+      end
+    else
+      msg = "Invalid input. Options for 'currency' are:  "..table.concat(options,", ");
+    end
+  
+  else
+    -- toggle main setting
+    FI_SVPC_CONFIG.Currency.tracking = LIB.toggle(FI_SVPC_CONFIG.Currency.tracking);
+    
+    if (FI_SVPC_CONFIG.Currency.tracking == true) then
+      FI_SVPC_CONFIG.Currency.show = true;
+    else
+      FI_SVPC_CONFIG.Currency.show = false;
+    end
+    
+    msg = {};
+    msg[1] = "Currency tracking = "..strupper(tostring(FI_SVPC_CONFIG.Currency.tracking));
+    msg[2] = "Currency bar:  show = "..strupper(tostring(FI_SVPC_CONFIG.Currency.show));
+  end
+  
+  -- update interface
+  FI_Update_Currency();
+  
+  -- output
+  if (not silent) then
+    FI_Message(msg);
+  end
+  
+  -- return current state
+  return FI_SVPC_CONFIG.Currency;
 end
 
 --------------------------------------------------------------------------------
