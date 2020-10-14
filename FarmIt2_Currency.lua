@@ -22,13 +22,12 @@
 -- if currency name given, returns full info if available
 function FI_HasTokens( currency )
   -- check if player has any trackable currencies available
-  for index=1,GetCurrencyListSize() do
-    local name, isHeader, isExpanded, isUnused, isWatched, count, icon, maximum, hasWeeklyLimit, currentWeeklyAmount = GetCurrencyListInfo(index);
-    --print(GetCurrencyListSize().."    "..name.."    "..tostring(isHeader).."    "..count);
+  for index=1,C_CurrencyInfo.GetCurrencyListSize() do
+    local name, isHeader, isExpanded, isUnused, isWatched, count, icon, maximum, hasWeeklyLimit, currentWeeklyAmount = C_CurrencyInfo.GetCurrencyListInfo(index);
     
     -- NOTE: new characters start out with [Player vs. Player, Conquest Points = 0] 
     -- even though they have NO currency tab on their character window
-    if name and (not isHeader) and (GetCurrencyListSize() > 2) then
+    if name and (not isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
       if currency then
         -- query matched, return item data
         if (currency == name) then
@@ -82,7 +81,7 @@ function FI_Update_Currency( event )
   -- process DATA UPDATES for all three "watched currency" slots
   for cid=1,3 do
     -- API query
-    local name,count,icon = GetBackpackCurrencyInfo(cid);
+    local name,count,icon = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
     
     local results;
     if name then
@@ -217,7 +216,7 @@ function FI_UI_Currency()
       _G[f_name.."_Count"]:SetVertexColor(color[1], color[2], color[3]);
       
       -- color the backpack token text
-      local name,count,icon = GetBackpackCurrencyInfo(cid);
+      local name,count,icon = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
       if name then
         _G["BackpackTokenFrameToken"..cid].count:SetVertexColor(color[1], color[2], color[3]);
       end
@@ -280,7 +279,7 @@ function FI_Tooltip_Currency( self )
   if (FI_SV_CONFIG.Tooltips.currency == false) then return; end
 
   local cid = FI_FrameToID( self:GetName() );
-  local name = GetBackpackCurrencyInfo(cid);
+  local name = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
   local index = FI_HasTokens(name);
   
   -- create tooltip
