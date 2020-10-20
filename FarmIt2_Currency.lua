@@ -181,7 +181,7 @@ function FI_Update_Currency_Slot( currency )
   local slot = "FI_Currency_"..currency.id;
   
   -- Currency .name is currently a table of the result of currency, hence currency.name.name hack
-  if (strlen(currency.name.name) > 0) then
+  if (currency ~= nil and currency.name ~= nil and currency.name.name ~= nil and strlen(currency.name.name) > 0) then
     -- populate slot
     _G[slot.."_Icon"]:SetTexture(currency.name.icon);
     _G[slot.."_Count"]:SetText(currency.name.quantity);
