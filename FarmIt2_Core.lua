@@ -708,9 +708,10 @@ function FI_Progress( data, silent )
     f_name = "FI_Button_"..data.id;
     database = "Buttons";
     itemName,itemLink = GetItemInfo(data.item);
-  elseif data.name then
+  elseif data.name ~= nil then
     f_name = "FI_Currency_"..data.id;
     database = "Currencies";
+    -- add nested name hack
     currencyName = "|cFF"..FI_SV_CONFIG.Colors.currency[4]..data.name.."|r";
   elseif FI_SV_CONFIG.debug then
     print("[FI_Progress]  Missing data!  f_name = "..f_name); return; --debug
