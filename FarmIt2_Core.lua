@@ -29,7 +29,7 @@ end
 --------------------------------------------------------------------------------
 
 -- return uptime information
--- threshold should be given in seconds
+-- threshold should be7 given in seconds
 function FI_Uptime( threshold )
   local uptime = time() - FI_LOAD_TS;
   
@@ -711,14 +711,21 @@ function FI_Progress( data, silent )
   
   -- determine whether checking a button frame, or other type of data
   if data.item then
+    FI_Debug(data, 'data (714)')
     f_name = "FI_Button_"..data.id;
     database = "Buttons";
     itemName,itemLink = GetItemInfo(data.item);
   elseif data.name ~= nil then
+    FI_Debug(data, 'data (719)')
     f_name = "FI_Currency_"..data.id;
     database = "Currencies";
     -- add nested name hack
-    currencyName = "|cFF"..FI_SV_CONFIG.Colors.currency[4]..data.name.."|r";
+    if data.name.name ~= nil then
+      name = data.name.name
+    else
+      name = data.name
+    end
+    currencyName = "|cFF"..FI_SV_CONFIG.Colors.currency[4]..name.."|r";
   elseif FI_SV_CONFIG.debug then
     print("[FI_Progress]  Missing data!  f_name = "..f_name); return; --debug
   end
