@@ -18,6 +18,12 @@
     The numeric primary key of a farming session as found in its data "record" stored at FI_SVPC_DATA.Sessions
 ]]--
 
+function FI_Debug(obj, desc)
+  if ViragDevTool_AddData then
+    ViragDevTool_AddData(obj, desc)
+  end
+end
+
 --------------------------------------------------------------------------------
 --  STARTUP
 --------------------------------------------------------------------------------
