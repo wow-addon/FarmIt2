@@ -950,8 +950,8 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
           print("[FI_Set_Objective]  Notification failed due to missing itemLink! Item ID: "..data.item); --debug
         end
       elseif data.name then
-        -- currencies
-        message = "Farming objective set:  "..data.objective.." "..data.name;
+        -- currencies (data.name.name yak needs refactor)
+        message = "Farming objective set:  "..data.objective.." "..data.name.name;
         
         -- update the cache
         FI_DB.cache(FI_SVPC_DATA, "Currencies");

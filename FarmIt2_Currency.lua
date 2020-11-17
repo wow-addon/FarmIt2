@@ -23,15 +23,15 @@
 function FI_HasTokens( currency )
   -- check if player has any trackable currencies available
   for index=1,C_CurrencyInfo.GetCurrencyListSize() do
-    local name, isHeader, isExpanded, isUnused, isWatched, count, icon, maximum, hasWeeklyLimit, currentWeeklyAmount = C_CurrencyInfo.GetCurrencyListInfo(index);
-    
+    local info = C_CurrencyInfo.GetCurrencyListInfo(index);
+
     -- NOTE: new characters start out with [Player vs. Player, Conquest Points = 0] 
     -- even though they have NO currency tab on their character window
-    if name and (not isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
+    if info.name and (not info.isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
       if currency then
         -- query matched, return item data
         if (currency == name) then
-          return index, name, count, maximum, hasWeeklyLimit, currentWeeklyAmount;
+          return index, info.name, info.quantity, info.maxQuantity, info.canEarnPerWeek, info.quantityEarnedThisWeek;
         end
       else
         -- found a currency, exit loop
@@ -280,19 +280,19 @@ function FI_Tooltip_Currency( self )
   if (FI_SV_CONFIG.Tooltips.currency == false) then return; end
 
   local cid = FI_FrameToID( self:GetName() );
-  local name = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
-  local index = FI_HasTokens(name);
-  
+  local info = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
+  local index = FI_HasTokens(info.name);
+
   -- create tooltip
   GameTooltip:SetOwner(self,"ANCHOR_BOTTOMLEFT",50,-30);
-  
-  if name then
+
+  if info.name then
     -- insert the normal tooltip for this currency
-    GameTooltip:SetCurrencyToken(index);
+    GameTooltip:SetCurrencyToken(cid);
     -- insert FarmIt lines
     GameTooltip:AddLine(FI_Currency_Tooltip(cid).."|n|cFFFFFFFFHold |cFF00FF00Shift|cFFFFFFFF to move Currency Bar.|r");
   end
-  
+
   GameTooltip:Show();
 end
 
@@ -337,9 +337,6 @@ function FI_Click_Currency( self, click, down )
       end
     
     else
-      ------------------------------------------------------------
-      -- 
-      ------------------------------------------------------------
       if down then
         --
       else
@@ -350,10 +347,6 @@ function FI_Click_Currency( self, click, down )
   
   elseif (click == "RightButton") then
     if IsShiftKeyDown() then
-      ------------------------------------------------------------
-      -- 
-      ------------------------------------------------------------
-      
     else
       ------------------------------------------------------------
       -- EDIT OBJECTIVE
