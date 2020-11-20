@@ -21,17 +21,23 @@
 
 -- if currency name given, returns full info if available
 function FI_HasTokens( currency )
-  -- check if player has any trackable currencies available
-  for index=1,C_CurrencyInfo.GetCurrencyListSize() do
-    local info = C_CurrencyInfo.GetCurrencyListInfo(index);
+  
+  local currencyName
+  if currency then currencyName = currency.name end
 
+    -- check if player has any trackable currencies available
+  for index=1, C_CurrencyInfo.GetCurrencyListSize() do
+    local name, isHeader, isExpanded, isUnused, isWatched, count, icon, maximum, hasWeeklyLimit, currentWeeklyAmount = C_CurrencyInfo.GetCurrencyListInfo(index);
+    
+    if name then name = name.name end
+        
     -- NOTE: new characters start out with [Player vs. Player, Conquest Points = 0] 
     -- even though they have NO currency tab on their character window
-    if info.name and (not info.isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
-      if currency then
+    if name and (not isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
+      if currencyName then
         -- query matched, return item data
-        if (currency == name) then
-          return index, info.name, info.quantity, info.maxQuantity, info.canEarnPerWeek, info.quantityEarnedThisWeek;
+        if (currencyName == name) then
+          return index, name, count, maximum, hasWeeklyLimit, currentWeeklyAmount;
         end
       else
         -- found a currency, exit loop
@@ -62,7 +68,7 @@ end
 
 -- core currency update routine
 function FI_Update_Currency( event )
-  -- prevent extra calls curing startup
+  -- prevent extra calls during startup
   if ((FI_LOADING == true) and (FI_CURRENCY_LOADED == true)) or ((FI_CURRENCY_LOADED == true) and (FI_Uptime(FI_MIN_UPTIME) == false)) then
     return;
   end
@@ -72,7 +78,7 @@ function FI_Update_Currency( event )
   -- config check
   if (FI_SVPC_CONFIG.Currency.tracking == false) then
     if FI_SV_CONFIG.debug then print("[FI_Update_Currency]  Currency tracking is OFF."); end
-    return;
+    return
   end
   
   -- take a snapshot of current data
@@ -183,7 +189,8 @@ function FI_Update_Currency_Slot( currency )
   -- Currency .name is currently a table of the result of currency, hence currency.name.name hack
   if (currency ~= nil and currency.name ~= nil and currency.name.name ~= nil and strlen(currency.name.name) > 0) then
     -- populate slot
-    _G[slot.."_Icon"]:SetTexture(currency.name.icon);
+    
+    _G[slot.."_Icon"]:SetTexture(currency.name.iconFileID);
     _G[slot.."_Count"]:SetText(currency.name.quantity);
     --_G[slot.."_Objective"]:SetText(currency.objective);
     _G[slot]:Show();
@@ -280,19 +287,19 @@ function FI_Tooltip_Currency( self )
   if (FI_SV_CONFIG.Tooltips.currency == false) then return; end
 
   local cid = FI_FrameToID( self:GetName() );
-  local info = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
-  local index = FI_HasTokens(info.name);
-
+  local name = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
+  local index = FI_HasTokens(name);
+  
   -- create tooltip
   GameTooltip:SetOwner(self,"ANCHOR_BOTTOMLEFT",50,-30);
-
-  if info.name then
+  
+  if name then
     -- insert the normal tooltip for this currency
-    GameTooltip:SetCurrencyToken(cid);
+    GameTooltip:SetCurrencyToken(index);
     -- insert FarmIt lines
     GameTooltip:AddLine(FI_Currency_Tooltip(cid).."|n|cFFFFFFFFHold |cFF00FF00Shift|cFFFFFFFF to move Currency Bar.|r");
   end
-
+  
   GameTooltip:Show();
 end
 
@@ -337,6 +344,9 @@ function FI_Click_Currency( self, click, down )
       end
     
     else
+      ------------------------------------------------------------
+      -- 
+      ------------------------------------------------------------
       if down then
         --
       else
@@ -347,6 +357,10 @@ function FI_Click_Currency( self, click, down )
   
   elseif (click == "RightButton") then
     if IsShiftKeyDown() then
+      ------------------------------------------------------------
+      -- 
+      ------------------------------------------------------------
+      
     else
       ------------------------------------------------------------
       -- EDIT OBJECTIVE
