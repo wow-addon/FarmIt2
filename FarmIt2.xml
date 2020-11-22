@@ -22,7 +22,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
   <EditBox name="FI_TPL_Editbox" frameStrata="DIALOG" toplevel="true" hidden="true" virtual="true">
     <Scripts>
     </Scripts>
-    <FontString inherits="ChatFontNormal" bytes="256"/>
+    <FontString inherits="ChatFontNormal" />
     <Layers>
       <Layer level="BACKGROUND">
         <Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left2">
