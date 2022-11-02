@@ -7,7 +7,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
   <Frame name="FI_PARENT" frameStrata="LOW" parent="UIParent" hidden="false">
     <Size x="2" y="2"/>
     <Anchors>
-      <Anchor point="CENTER" realativeTo="UIParent" relativePoint="CENTER" x="0" y="0"/>
+      <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER" x="0" y="0"/>
     </Anchors>
     <Scripts>
       <OnLoad>

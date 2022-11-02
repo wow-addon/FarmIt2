@@ -96,7 +96,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 
     <Frames>
     
-      <CheckButton name="$parent_CB1" inherits="OptionsCheckButtonTemplate">
+      <CheckButton name="$parent_CB1"> <!--inherits="OptionsCheckButtonTemplate"-->
         <Size>
           <AbsDimension x="26" y="26"/>
         </Size>
