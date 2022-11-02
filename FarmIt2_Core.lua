@@ -305,11 +305,11 @@ FI_FRAMES.Currency = function()
   if FI_SV_CONFIG.debug then print("FI_FRAMES.Currency called."); end
   
   -- set some script triggers
-  _G["TokenFrameContainer"]:SetScript("OnHide", FI_Update_Currency);
+  --BruteForceRemovalForInitialDragonFlightCompatibility--_G["TokenFrameContainer"]:SetScript("OnHide", FI_Update_Currency);
   
-  for n=1,3 do
-    _G["BackpackTokenFrameToken"..n]:SetScript("OnMouseUp", FI_Edit_Currency);
-  end
+  --BruteForceRemovalForInitialDragonFlightCompatibility--for n=1,3 do
+  --BruteForceRemovalForInitialDragonFlightCompatibility--  _G["BackpackTokenFrameToken"..n]:SetScript("OnMouseUp", FI_Edit_Currency);
+  --BruteForceRemovalForInitialDragonFlightCompatibility--end
   
   GameTooltip:HookScript("OnShow", FI_Hook_Currency);
   

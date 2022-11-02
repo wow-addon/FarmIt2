@@ -67,12 +67,12 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
           </Anchors>
         </Texture>
         
-        <Button name="$parent_Item" inherits="SecureActionButtonTemplate" hidden="true">
+        <!--Button name="$parent_Item" inherits="SecureActionButtonTemplate" hidden="true">
           <Attributes>
             <Attribute name="type" type="string" value="item" />
           </Attributes>
           <Size x="36" y="36" />
-        </Button>
+        </Button-->
       </Layer>
     </Layers>
     <Frames>

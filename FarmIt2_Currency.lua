@@ -53,7 +53,7 @@ function FI_Init_Currency( event )
   
   if FI_HasTokens() then
     -- register for "watch currency" updates
-    _G["TokenFramePopupBackpackCheckBox"]:HookScript("OnClick", FI_Update_Currency);
+    --BruteForceRemovalForInitialDragonFlightCompatibility--_G["TokenFramePopupBackpackCheckBox"]:HookScript("OnClick", FI_Update_Currency);
     
     -- one-time startup check
     if (FI_CURRENCY_LOADED == false) then
@@ -225,9 +225,9 @@ function FI_UI_Currency()
       
       -- color the backpack token text
       local name,count,icon = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
-      if name then
-        _G["BackpackTokenFrameToken"..cid].count:SetVertexColor(color[1], color[2], color[3]);
-      end
+      --BruteForceRemovalForInitialDragonFlightCompatibility--if name then
+      --BruteForceRemovalForInitialDragonFlightCompatibility--  _G["BackpackTokenFrameToken"..cid].count:SetVertexColor(color[1], color[2], color[3]);
+      --BruteForceRemovalForInitialDragonFlightCompatibility--end
       
       _G[f_name]:Show();
     else
