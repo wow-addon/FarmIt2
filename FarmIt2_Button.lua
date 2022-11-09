@@ -480,7 +480,7 @@ function FI_Edit_Item( self, button )
   if button.item and (button.item > 0) then
     _G[eb_name]:SetNumber(button.item);
   else
-    _G[eb_name]:SetNumber("");
+    _G[eb_name]:SetNumber(0);
   end
   
   _G[eb_name]:Show();
