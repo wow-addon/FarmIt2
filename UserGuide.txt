@@ -3,10 +3,10 @@
 ----------------------------------------------------------------------------------------------------
 
 The latest version of this guide can be found online at: 
-http://wow.curseforge.com/addons/farm-it/pages/user-guide/
+https://github.com/wow-addon/FarmIt2/blob/master/UserGuide.txt
 
 Complete command-line documentation can be found at: 
-http://wow.curseforge.com/addons/farm-it/pages/commands/
+https://github.com/wow-addon/FarmIt2/blob/master/Commands.txt
 
 --------------------------------------------------------------------------------
 

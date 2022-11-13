@@ -14,7 +14,7 @@ local yellow,green,blue,white = "|cFFFFFF00","|cFF00FF00","|cFF00CCFF","|cFFFFFF
 --  CONFIG PANELS
 --------------------------------------------------------------------------------
 FI_CONFIG.Panel = CreateFrame("Frame", "FI_Panel", UIParent);
-FI_CONFIG.Panel.name = "FarmIt";
+FI_CONFIG.Panel.name = "FarmIt2";
 InterfaceOptions_AddCategory(FI_CONFIG.Panel);
 
 FI_CONFIG.Pages = {
@@ -179,7 +179,7 @@ end
 --  HELP TEXT
 --------------------------------------------------------------------------------
 FI_HELP_TEXT = [[The latest version of this guide can be found online at: 
-http://wow.curseforge.com/addons/farm-it/pages/user-guide/
+https://github.com/wow-addon/FarmIt2/blob/master/UserGuide.txt
 
 Click the "Commands" page on the left to see a full list of configurations commands.
 

@@ -15,8 +15,10 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
         _G[self:GetName().."_SubTitle"]:SetText("A customizable inventory tracker for World of Warcraft.");
         
         _G[self:GetName().."_Description"]:SetText(
+          "A community-maintained fork of Farmit, which has not been maintained in quite some time.\n"..
+          "The original version of FarmIt by |cFF33CCFFCHiLLZ|r is located over at |cFF33FF33www.curse.com/addons/wow/farm-it|r\n"..
           "FarmIt has evolved a lot over the years through great feedback from its users. Thanks everyone!  :)\n"..
-          "User comments are welcome on the official download page:  |cFF33FF33www.curse.com/addons/wow/farm-it|r"
+          "Community-maintained since 2020 on github:  |cFF33FF33github.com/wow-addon/FarmIt2|r where comments and updates are always welcome."
         );
         _G[self:GetName().."_Description"]:SetWidth( self:GetWidth() );
         
@@ -230,7 +232,10 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
         _G[self:GetName().."_Description"]:SetText("Below is a general guide on how to use FarmIt.");
         
         _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_HELP_TEXT );
+        <!--
         _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+        -->
+        _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth(self:GetWidth() );
       </OnLoad>
     </Scripts>
 
@@ -303,7 +308,10 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
         );
 
         _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetText( FI_COMMANDS_TEXT );
+        <!--
         _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth( _G[self:GetName().."_ScrollFrame_ScrollChildFrame"]:GetWidth() );
+        -->
+        _G[self:GetName().."_ScrollFrame_ScrollChildFrame_Text"]:SetWidth(self:GetWidth() );
       </OnLoad>
     </Scripts>
 
