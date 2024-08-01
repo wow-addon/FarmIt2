@@ -2,9 +2,9 @@
 --  GUI Configuration Panel
 --
 --  To open directly:
---    InterfaceOptionsFrame_OpenToCategory(panel);
+--    Settings.OpenToCategory(panel)
 --  or
---    InterfaceOptionsFrame_OpenToCategory(panel.name);
+--    Settings.OpenToCategory(panel.name);
 --  
 --------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ local yellow,green,blue,white = "|cFFFFFF00","|cFF00FF00","|cFF00CCFF","|cFFFFFF
 --------------------------------------------------------------------------------
 FI_CONFIG.Panel = CreateFrame("Frame", "FI_Panel", UIParent);
 FI_CONFIG.Panel.name = "FarmIt2";
-InterfaceOptions_AddCategory(FI_CONFIG.Panel);
+Settings.CreateCategory(FI_CONFIG.Panel);
 
 FI_CONFIG.Pages = {
   CreateFrame("Frame", "FI_Panel_1", FI_CONFIG.Panel),
@@ -27,23 +27,23 @@ FI_CONFIG.Pages = {
 
 FI_CONFIG.Pages[1]["name"] = "General";
 FI_CONFIG.Pages[1]["parent"] = FI_CONFIG.Panel.name;
---InterfaceOptions_AddCategory(FI_Panel_1);
+Settings.CreateCategory(FI_Panel_1);
 
 FI_CONFIG.Pages[2]["name"] = "Buttons";
 FI_CONFIG.Pages[2]["parent"] = FI_CONFIG.Panel.name;
---InterfaceOptions_AddCategory(FI_Panel_2);
+Settings.CreateCategory(FI_Panel_2);
 
 FI_CONFIG.Pages[3]["name"] = "Bars";
 FI_CONFIG.Pages[3]["parent"] = FI_CONFIG.Panel.name;
---InterfaceOptions_AddCategory(FI_Panel_3);
+Settings.CreateCategory(FI_Panel_3);
 
 FI_CONFIG.Pages[4]["name"] = "Help";
 FI_CONFIG.Pages[4]["parent"] = FI_CONFIG.Panel.name;
-InterfaceOptions_AddCategory(FI_Panel_4);
+Settings.CreateCategory(FI_Panel_4);
 
 FI_CONFIG.Pages[5]["name"] = "Commands";
 FI_CONFIG.Pages[5]["parent"] = FI_CONFIG.Panel.name;
-InterfaceOptions_AddCategory(FI_Panel_5);
+Settings.CreateCategory(FI_Panel_5);
 
 
 --------------------------------------------------------------------------------

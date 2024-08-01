@@ -188,16 +188,16 @@ function FI_Click_Group( self, click, down )
       -- SHOW COMMAND REFERENCE
       ------------------------------------------------------------
       if (down == false) then
-        InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[5]);
-        InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[5]);
+        Settings.OpenToCategory(FI_CONFIG.Pages[5]);
+        Settings.OpenToCategory(FI_CONFIG.Pages[5]);
       end
     else
       ------------------------------------------------------------
       -- SHOW USER GUIDE
       ------------------------------------------------------------
       if (down == false) then
-        InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[4]);
-        InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[4]);
+        Settings.OpenToCategory(FI_CONFIG.Pages[4]);
+        Settings.OpenToCategory(FI_CONFIG.Pages[4]);
       end
     end
   end

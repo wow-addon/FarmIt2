@@ -126,12 +126,12 @@ function FI_Command( input, editbox )
   cmd = strlower(cmd);
 
   if (cmd == "help") then
-    InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[4]);
-    InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[4]);
+    Settings.OpenToCategory(FI_CONFIG.Pages[4]);
+    Settings.OpenToCategory(FI_CONFIG.Pages[4]);
 
   elseif (cmd == "options") or (cmd == "config") then
-    InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[5]);
-    InterfaceOptionsFrame_OpenToCategory(FI_CONFIG.Pages[5]);
+    Settings.OpenToCategory(FI_CONFIG.Pages[5]);
+    Settings.OpenToCategory(FI_CONFIG.Pages[5]);
   
   elseif (cmd == "reset") then
     StaticPopup_Show("RESET");
