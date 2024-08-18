@@ -76,7 +76,10 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
     <Scripts>
       <OnLoad>
         _G[self:GetName().."_Title"]:SetText("General Settings");
-        _G[self:GetName().."_Description"]:SetText("Due to the nature of FarmIt's purpose, most settings are saved on a per-character basis since different toons will have different professions, etc. However, statistical data and item related information such as farming templates (saved sets of items) are shared between characters.");
+        _G[self:GetName().."_Description"]:SetText("Due to the nature of FarmIt's purpose,\n most settings are saved on a per-character basis since different toons will have different professions, etc.\n"..
+                                                    "However, statistical data and item related information such as farming templates (saved sets of items)\n"..
+                                                    "are shared between characters."
+                                                  );
       </OnLoad>
     </Scripts>
 
@@ -163,7 +166,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
     <Scripts>
       <OnLoad>
         _G[self:GetName().."_Title"]:SetText(FI_TAGLINE.." - Buttons");
-        _G[self:GetName().."_Description"]:SetText("");
+        _G[self:GetName().."_Description"]:SetText(" - Buttons are not fully implemented or documentated ¯\_(ツ)_/¯ - ");
       </OnLoad>
     </Scripts>
 
