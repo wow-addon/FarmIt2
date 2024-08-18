@@ -62,7 +62,7 @@ function FI_Tooltip( self )
       GameTooltip:SetHyperlink(sLink);
       
       -- check for iTip
-      if IsAddOnLoaded("iTip") then
+      if C_AddOn.IsAddOnLoaded("iTip") then
         -- let iTip do this part (prevents duplicate info)
       else
         GameTooltip:AddLine("\n"..sType.." ("..sSubType..")");
