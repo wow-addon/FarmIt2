@@ -312,13 +312,16 @@ function FI_Hook_Currency( tooltip )
     -- Try getting the parent frame's name right off instead of getting the whole object, and if it's not a backpack or currency window frame just exit.
     local parent = owner:GetParent();
     
-    if parent and (parent:GetName() == "BackpackTokenFrame") then
-      cid = tonumber(strsub(owner:GetName(), -1));
-      -- show objective if set
-      local line = FI_Currency_Tooltip(cid);
-      if line then GameTooltip:AddLine(line);	tooltip:Show(); end
+    -- Sometimes cid can be nil? BugSack show Error
+	  if cid == nil then 
+      if FI_SV_CONFIG.debug then print("BackpackTokenFrame Error!"); end
+      else
+        cid = tonumber(strsub(owner:GetName(), -1));
+        -- show objective if set
+        local line = FI_Currency_Tooltip(cid);
+        if line then GameTooltip:AddLine(line);	tooltip:Show(); end
+      end 
     end
-  end
 end
 
 --------------------------------------------------------------------------------
