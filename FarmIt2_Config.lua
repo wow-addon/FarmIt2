@@ -15,7 +15,9 @@ local yellow,green,blue,white = "|cFFFFFF00","|cFF00FF00","|cFF00CCFF","|cFFFFFF
 --------------------------------------------------------------------------------
 FI_CONFIG.Panel = CreateFrame("Frame", "FI_Panel", UIParent);
 FI_CONFIG.Panel.name = "FarmIt2";
-Settings.CreateCategory(FI_CONFIG.Panel);
+
+local mainCategory = Settings.RegisterCanvasLayoutCategory(FI_CONFIG.Panel, "FarmIt2");
+Settings.RegisterAddOnCategory(mainCategory);
 
 FI_CONFIG.Pages = {
   CreateFrame("Frame", "FI_Panel_1", FI_CONFIG.Panel),
@@ -27,23 +29,23 @@ FI_CONFIG.Pages = {
 
 FI_CONFIG.Pages[1]["name"] = "General";
 FI_CONFIG.Pages[1]["parent"] = FI_CONFIG.Panel.name;
-Settings.CreateCategory(FI_Panel_1);
+Settings.RegisterCanvasLayoutSubcategory(mainCategory, FI_CONFIG.Pages[1], FI_CONFIG.Pages[1]["name"]);
 
 FI_CONFIG.Pages[2]["name"] = "Buttons";
 FI_CONFIG.Pages[2]["parent"] = FI_CONFIG.Panel.name;
-Settings.CreateCategory(FI_Panel_2);
+Settings.RegisterCanvasLayoutSubcategory(mainCategory, FI_CONFIG.Pages[2], FI_CONFIG.Pages[2]["name"]);
 
 FI_CONFIG.Pages[3]["name"] = "Bars";
 FI_CONFIG.Pages[3]["parent"] = FI_CONFIG.Panel.name;
-Settings.CreateCategory(FI_Panel_3);
+Settings.RegisterCanvasLayoutSubcategory(mainCategory, FI_CONFIG.Pages[3], FI_CONFIG.Pages[3]["name"]);
 
 FI_CONFIG.Pages[4]["name"] = "Help";
 FI_CONFIG.Pages[4]["parent"] = FI_CONFIG.Panel.name;
-Settings.CreateCategory(FI_Panel_4);
+Settings.RegisterCanvasLayoutSubcategory(mainCategory, FI_CONFIG.Pages[4], FI_CONFIG.Pages[4]["name"]);
 
 FI_CONFIG.Pages[5]["name"] = "Commands";
 FI_CONFIG.Pages[5]["parent"] = FI_CONFIG.Panel.name;
-Settings.CreateCategory(FI_Panel_5);
+Settings.RegisterCanvasLayoutSubcategory(mainCategory, FI_CONFIG.Pages[5], FI_CONFIG.Pages[5]["name"]);
 
 
 --------------------------------------------------------------------------------
