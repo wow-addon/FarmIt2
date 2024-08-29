@@ -239,6 +239,10 @@ FI_TPL.Templates.WOW.Cloth = {2589,2996,2592,2997,4306,4305,4338,4339,14047,1404
 FI_TPL.Templates.TBC.Cloth = {21877,21840,21842,21844,24271,24272,21845}
 FI_TPL.Templates.WOTLK.Cloth = {33470,41510,41511,41595,41593,41594}
 FI_TPL.Templates.CATA.Cloth = {53010,53643,54440}
+-- The War Within
+FI_TPL.Templates.TWW.Cloth = {221557}
+FI_TPL.Templates.TWW.Cloth = {221558}
+FI_TPL.Templates.TWW.Cloth = {221559}
 
 --------------------------------------------------------------------------------
 --  MISC
