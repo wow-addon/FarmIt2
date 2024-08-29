@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 The latest version of this document can be found online at: 
-https://github.com/wow-addon/FarmIt2/blobl/master/Commands.txt
+https://github.com/wow-addon/FarmIt2/blob/master/Commands.txt
 
 A general user guide can be found at: 
 https://github.com/wow-addon/FarmIt2/blob/master/UserGuide.txt
