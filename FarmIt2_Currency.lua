@@ -307,10 +307,6 @@ end
 function FI_Hook_Currency( tooltip )
   if (FI_SVPC_CONFIG.Currency.tracking == true) and tooltip:GetOwner() then
     local owner = tooltip:GetOwner();
---[[     -- THIS LINE CAUSES A TAINTED CODE ERROR WHEN USING BLIZZARD'S TWITTER INTEGRATION INTERFACE!!
-    -- Try getting the parent frame's name right off instead of getting the whole object, and if it's not a backpack or currency window frame just exit.
-    local parent = owner:GetParent();
-    
     -- Sometimes cid can be nil? BugSack show Error
 	  if cid == nil then 
       if FI_SV_CONFIG.debug then print("BackpackTokenFrame Error!"); end
