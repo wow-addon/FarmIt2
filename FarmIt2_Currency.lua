@@ -308,6 +308,7 @@ function FI_Hook_Currency( tooltip )
   if (FI_SVPC_CONFIG.Currency.tracking == true) and tooltip:GetOwner() then
     local owner = tooltip:GetOwner();
     -- Sometimes cid can be nil? BugSack show Error
+    -- Eventually broken with the Dragonflight Update ( see @BruteForceRemovalForInitialDragonFlightCompatibility)
 	  if cid == nil then 
       if FI_SV_CONFIG.debug then print("BackpackTokenFrame Error!"); end
       else
