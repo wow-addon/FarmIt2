@@ -263,9 +263,9 @@ function FI_Click( self, click, down )
       -- See FarmIt2_Button.xml, FI_FRAMES.Button, and FI_Set_Button
       if button.item then
         -- make sure we actually have the item in our inventory
-        if GetItemSpell(button.item) and (GetItemCount(button.item) > 0) then
+        if C_Item.GetItemSpell(button.item) and (C_Item.GetItemCount(button.item) > 0) then
           -- inform user that Right-Click action was received
-          local itemName, itemLink = GetItemInfo(button.item);
+          local itemName, itemLink = C_Item.GetItemInfo(button.item);
           if itemLink then
             FI_Message("Using "..itemLink);
           end
