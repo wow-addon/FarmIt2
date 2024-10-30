@@ -364,7 +364,7 @@ function FI_Set_Button( bid, newItem )
     local f_name = "FI_Button_"..button.id;
 
     -- set icon
-    _G[f_name.."_Icon"]:SetTexture( C_Item.GetItemIconbyID(button.item) ); --if this fails, FI_Update_Button should fix it
+    _G[f_name.."_Icon"]:SetTexture( C_Item.GetItemIconByID(button.item) ); --if this fails, FI_Update_Button should fix it
 
     -- bank inclusion indicator
     if button.bank then
