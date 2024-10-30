@@ -66,6 +66,32 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
             <Anchor point="CENTER" x="0" y="0" />
           </Anchors>
         </Texture>
+
+        <Texture name="$parent_Glow" alphaMode="MOD" hidden="true">
+          <Size x="33" y="33" />
+          <Anchors>
+            <Anchor point="CENTER" x="0" y="0" />
+          </Anchors>
+        </Texture>
+        <Texture name="$parent_WarHoundsBank" file="Interface\Buttons\UI-AutoCastableOverlay" hidden="true">
+          <Size x="66" y="66" />
+          <Anchors>
+            <Anchor point="CENTER" x="0" y="0" />
+          </Anchors>
+        </Texture>
+
+        <Texture name="$parent_Glow" alphaMode="MOD" hidden="true">
+          <Size x="33" y="33" />
+          <Anchors>
+            <Anchor point="CENTER" x="0" y="0" />
+          </Anchors>
+        </Texture>
+        <Texture name="$parent_MaterialsBank" file="Interface\Buttons\UI-AutoCastableOverlay" hidden="true">
+          <Size x="66" y="66" />
+          <Anchors>
+            <Anchor point="CENTER" x="0" y="0" />
+          </Anchors>
+        </Texture>
         
         <!--Button name="$parent_Item" inherits="SecureActionButtonTemplate" hidden="true">
           <Attributes>
