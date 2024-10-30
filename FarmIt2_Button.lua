@@ -57,7 +57,7 @@ function FI_Tooltip( self )
     local spacer = ":  ";
 
     -- extra item info
-    local sName, sLink, iQuality, iLevel, iMinLevel, sType, sSubType, iStackSize = GetItemInfo(button.item);
+    local sName, sLink, iQuality, iLevel, iMinLevel, sType, sSubType, iStackSize = C_Item.GetItemInfo(button.item);
     if sLink then
       GameTooltip:SetHyperlink(sLink);
 
@@ -305,14 +305,14 @@ function FI_Update_Button( bid, db_record )
     if not _G[f_name.."_Icon"]:GetTexture() then
       if FI_SV_CONFIG.debug then print("Update found a missing texture on BID "..button.id); end
 
-      _G[f_name.."_Icon"]:SetTexture( GetItemIcon(button.item) );
+      _G[f_name.."_Icon"]:SetTexture( C_Item.GetItemIconByID(button.item) );
     end
 
     -- make sure secure template action has been set
     if not _G[f_name]:GetAttribute("macrotext") then
       if FI_SV_CONFIG.debug then print("Update found missing macrotext on BID "..button.id); end
 
-      local itemName = GetItemInfo(button.item);
+      local itemName = C_Item.GetItemInfo(button.item);
       if itemName then
         _G[f_name]:SetAttribute("macrotext", "/use "..itemName);
       end
@@ -321,7 +321,7 @@ function FI_Update_Button( bid, db_record )
     --------------------------------------------------------------------------------
     -- GET CURRENT ITEM COUNT
     --------------------------------------------------------------------------------
-    local newcount = GetItemCount(button.item, button.bank);
+    local newcount = C_Item.GetItemCount(button.item, button.bank);
 
     -- try to be smart about only running interface and data changes when we need to
     if FI_LOADING or FI_MOVING or (newcount ~= button.count) then
@@ -364,7 +364,7 @@ function FI_Set_Button( bid, newItem )
     local f_name = "FI_Button_"..button.id;
 
     -- set icon
-    _G[f_name.."_Icon"]:SetTexture( GetItemIcon(button.item) ); --if this fails, FI_Update_Button should fix it
+    _G[f_name.."_Icon"]:SetTexture( C_Item.GetItemIconbyID(button.item) ); --if this fails, FI_Update_Button should fix it
 
     -- bank inclusion indicator
     if button.bank then
@@ -372,7 +372,7 @@ function FI_Set_Button( bid, newItem )
     end
 
     -- set secure template action
-    local itemName, itemLink = GetItemInfo(button.item); --if this fails, FI_Update_Button should fix it
+    local itemName, itemLink = C_Item.GetItemInfo(button.item); --if this fails, FI_Update_Button should fix it
     if itemName then
       _G[f_name]:SetAttribute("macrotext", "/use "..itemName);
     end
