@@ -509,7 +509,7 @@ function FI_Tooltip_Edit_Item( self )
 end
 
 --------------------------------------------------------------------------------
---  BANK INVENTORY | WarHoundsBank
+--  BANK INVENTORY | WarHoundsBank | Material Bank
 --------------------------------------------------------------------------------
 function FI_Toggle_Bank( bid )
   local button = FI_DB.select(FI_SVPC_DATA.Buttons, {id = bid}, true);
