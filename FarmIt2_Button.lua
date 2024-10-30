@@ -321,7 +321,7 @@ function FI_Update_Button( bid, db_record )
     --------------------------------------------------------------------------------
     -- GET CURRENT ITEM COUNT
     --------------------------------------------------------------------------------
-    local newcount = C_Item.GetItemCount(button.item, button.bank);
+    local newcount = C_Item.GetItemCount(button.item, button.bank, nil, button.materialsBank , button.warHoundsBank);
 
     -- try to be smart about only running interface and data changes when we need to
     if FI_LOADING or FI_MOVING or (newcount ~= button.count) then
@@ -509,7 +509,7 @@ function FI_Tooltip_Edit_Item( self )
 end
 
 --------------------------------------------------------------------------------
---  BANK INVENTORY
+--  BANK INVENTORY | WarHoundsBank | Material Bank
 --------------------------------------------------------------------------------
 function FI_Toggle_Bank( bid )
   local button = FI_DB.select(FI_SVPC_DATA.Buttons, {id = bid}, true);
@@ -517,7 +517,11 @@ function FI_Toggle_Bank( bid )
 
   if button.item then
     -- change setting
-    button = FI_DB.update(FI_SVPC_DATA.Buttons, {id = button.id}, {bank = LIB.toggle(button.bank)});
+    button = FI_DB.update(FI_SVPC_DATA.Buttons, {id = button.id}, {
+      bank = LIB.toggle(button.bank),
+      warHoundsBank = LIB.toggle(button.warHoundsBank),
+      materialsBank = LIB.toggle(button.materialsBank)
+  });
 
     -- bank indicator
     if button.bank then
@@ -526,10 +530,23 @@ function FI_Toggle_Bank( bid )
       _G[f_name.."_Bank"]:Hide();
     end
 
+    -- WarHoundsBank indicator
+    if button.warHoundsBank then
+      _G[f_name.."_WarHoundsBank"]:Show();
+    else
+      _G[f_name.."_WarHoundsBank"]:Hide();
+    end
+
+    if button.materialsBank then
+      _G[f_name.."_MaterialsBank"]:Show();
+    else
+      _G[f_name.."_MaterialsBank"]:Hide();
+    end
+
     -- refresh item count
     FI_Update_Button(button.id);
 
     PlaySound(6145); -- TalentScreenClose
-    FI_Message("Button ID "..button.id..":  Include Bank = "..strupper(tostring(button.bank)));
+    FI_Message("Button ID "..button.id..":\n Include |cFFFFFF00Bank|r = "..strupper(tostring(button.bank))..", \n Include |cFFFFFF00Warband Bank|r = "..strupper(tostring(button.warHoundsBank))..", \n Include |cFFFFFF00Material Bank|r = "..strupper(tostring(button.materialsBank)));
   end
 end
