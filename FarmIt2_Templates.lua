@@ -208,6 +208,11 @@ FI_TPL.Templates.TBC.Ink = {39342,43124,43108,43125}
 FI_TPL.Templates.WOTLK.Ink = {39343,43126,43109,43127}
 FI_TPL.Templates.CATA.Ink = {61979,61978,61980,61981}
 
+-- The War Within
+FI_TPL.Templates.TWW.Ink = {222618,222612,224802,224805}
+FI_TPL.Templates.TWW.InkT2 = {222619,222613,224801,224804}
+FI_TPL.Templates.TWW.InkT3 = {222620,222614,224800,224803}
+
 -- Jewelcrafting
 FI_TPL.Templates.WOW.JC = {774,818,1210,1206,1705,1529,3864}
 FI_TPL.Templates.WOW.JC2 = {7910,7909,12799,12800,12361,12364,12363}
@@ -222,6 +227,10 @@ FI_TPL.Templates.CATA.JC = {52177,52178,52179,52180,52181,52182}
 FI_TPL.Templates.CATA.JC2 = {52190,52191,52192,52193,52194,52195}
 FI_TPL.Templates.CATA.JC3 = {71805,71806,71807,71808,71809,71810}
 
+-- The War Within [JC2 -> Crushed Gemstones]
+FI_TPL.Templates.TWW.JC = {213398,213399,212495,212505,212508,212511}
+FI_TPL.Templates.TWW.JC2 = {213219,213220,213221}
+
 -- Leatherworking
 -- (see Skinning)
 
@@ -230,6 +239,10 @@ FI_TPL.Templates.WOW.Cloth = {2589,2996,2592,2997,4306,4305,4338,4339,14047,1404
 FI_TPL.Templates.TBC.Cloth = {21877,21840,21842,21844,24271,24272,21845}
 FI_TPL.Templates.WOTLK.Cloth = {33470,41510,41511,41595,41593,41594}
 FI_TPL.Templates.CATA.Cloth = {53010,53643,54440}
+-- The War Within
+FI_TPL.Templates.TWW.Cloth = {221557}
+FI_TPL.Templates.TWW.Cloth = {221558}
+FI_TPL.Templates.TWW.Cloth = {221559}
 
 --------------------------------------------------------------------------------
 --  MISC
