@@ -289,7 +289,9 @@ function FI_Tooltip_Currency( self )
   local cid = FI_FrameToID( self:GetName() );
   local name = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
   local index = FI_HasTokens(name);
-
+  if not index then
+    return
+  end
   -- create tooltip
   GameTooltip:SetOwner(self,"ANCHOR_BOTTOMLEFT",50,-30);
 

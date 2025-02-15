@@ -531,7 +531,7 @@ end
 --------------------------------------------------------------------------------
 --  OUTPUT
 --------------------------------------------------------------------------------
-function FI_Alert( message, color, sound, throttle )
+function FI_Alert( message, color, sound, throttle, item, louder )
   -- control when output is allowed
   if (FI_LOADING == false) and (FI_MOVING == false) and (FI_Uptime(FI_MIN_UPTIME) == true) then
     if FI_SV_CONFIG.debug then print("FI_Alert called."); end
@@ -547,7 +547,17 @@ function FI_Alert( message, color, sound, throttle )
     else
       -- audio
       if sound and FI_SV_CONFIG.Alerts.sound then
-        PlaySound(sound);
+        if louder then
+            local pre = GetCVar("Sound_MasterVolume");
+            SetCVar("Sound_MasterVolume", 1.0);
+            C_Timer.After(6, function() SetCVar("Sound_MasterVolume", pre) end);
+        end
+        if louder and Rarity and item then
+            Rarity:ShowFoundAlert(item, 1)
+        else
+            PlaySound(sound);
+        end
+        
       end
 
       -- chat frame
@@ -759,7 +769,11 @@ function FI_Progress( data, silent )
   end
 
   -- OBJECTIVE PROGRESS
+  local louder = false;
   if (data.objective > 0) then
+    -- Calculate the previous quotient and the new quotient in order to tell if an alert is needed
+    local prev_quotient = math.floor(data.lastcount / data.objective)
+    local new_quotient = math.floor(data.count / data.objective)
     if (data.count > data.lastcount) then
       status = "Farming progress:";
     else
@@ -775,13 +789,21 @@ function FI_Progress( data, silent )
         data = FI_DB.update(FI_SVPC_DATA[database], {id = data.id}, {success = false});
       end
       
-    elseif (data.success == false) then
+    elseif (new_quotient > prev_quotient) then
+      -- Don't use data.success here, since we're using the previous and current quotients, but leave the success as true
+      -- so the display remains the success color
       ------------------------------------------------------------
-      -- OBJECTIVE SUCCESS
+      -- OBJECTIVE SUCCESS - 1 or more multiples of data.objective
       ------------------------------------------------------------
       color = FI_SV_CONFIG.Colors.success;
-      status = "Objective complete!";
+
+      if (new_quotient == 1) then
+        status = "Objective complete!";
+      else
+        status = "Objective complete " .. tostring(new_quotient) .. " times!";
+      end
       sound = 619; -- QUESTCOMPLETED
+      louder = true;
 
       -- update notification flag
       data = FI_DB.update(FI_SVPC_DATA[database], {id = data.id}, {success = true});
@@ -843,7 +865,7 @@ function FI_Progress( data, silent )
   ------------------------------------------------------------
   if info and (not silent) and (not CursorHasItem()) then
     local message = status.."  "..info.."  "..suffix;
-    FI_Alert(message, nil, sound);
+    FI_Alert(message, nil, sound, false, data.item, louder);
   end
   
   ------------------------------------------------------------
@@ -855,7 +877,7 @@ function FI_Progress( data, silent )
   log_entry["record_id"] = data.id;
   if data.item then
     log_entry["item"] = data.item;
-    log_entry["count"] = GetItemCount(data.item);
+    log_entry["count"] = C_Item.GetItemCount(data.item);
   elseif data.name then
     log_entry["name"] = data.name;
     log_entry["count"] = data.count;
@@ -927,10 +949,10 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
     end
     _G[f_name.."_Objective"]:SetText(LIB.ShortNum(data.objective,precision,4));
   end
-  
+
   -- check progress
   FI_Progress(data, true);
-  
+
   -- notify user
   if amount then
     local message,sound;
@@ -961,7 +983,7 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
       end
       
       -- decide which sound to use
-      if (data.count > data.objective) then
+      if (data.count >= data.objective) then
         sound = 619; -- QUESTCOMPLETED
       else
         sound = 618; -- QUESTADDED
@@ -977,7 +999,7 @@ function FI_Set_Objective( tbl_name, rec_id, amount )
       end
     end
     
-    FI_Alert(message, color, sound);
+    FI_Alert(message, color, sound, false, nil, false);
   end
 end
 
