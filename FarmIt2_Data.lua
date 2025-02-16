@@ -23,10 +23,10 @@ FI_MOVING = false; --alters behavior of some functions
 FI_SPAM_LIMIT = 1; --seconds
 FI_MIN_UPTIME = 10; --seconds
 FI_ALERT_TS = 0; --timestamp
+FI_LOUD_ACTIVE = false; --flag to track if a loud alert is active, so the volume doesn't get stuck at max
 
 FI_ADDON_LOADED = false;
 FI_CURRENCY_LOADED = false;
-FI_BAGS_LOADED = false;
 
 -- FarmIt's clipboard
 FI_SELECTED = false;

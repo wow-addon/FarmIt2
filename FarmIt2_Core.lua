@@ -547,13 +547,17 @@ function FI_Alert( message, color, sound, throttle, item, louder )
     else
       -- audio
       if sound and FI_SV_CONFIG.Alerts.sound then
-        if louder then
+        if louder and not FI_LOUD_ACTIVE then
+            FI_LOUD_ACTIVE = true;
             local pre = GetCVar("Sound_MasterVolume");
             SetCVar("Sound_MasterVolume", 1.0);
-            C_Timer.After(6, function() SetCVar("Sound_MasterVolume", pre) end);
+            C_Timer.After(6, function()
+              SetCVar("Sound_MasterVolume", pre);
+              FI_LOUD_ACTIVE = false;
+            end);
         end
         if louder and Rarity and item then
-            Rarity:ShowFoundAlert(item, 1)
+            Rarity:ShowFoundAlert(item, 1);
         else
             PlaySound(sound);
         end
