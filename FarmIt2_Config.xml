@@ -101,12 +101,12 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 
     <Frames>
     
-      <CheckButton name="$parent_CB1"> <!--inherits="OptionsCheckButtonTemplate"-->
+      <CheckButton name="$parent_CB1" inherits="UICheckButtonTemplate"> <!--inherits="OptionsCheckButtonTemplate"-->
         <Size>
           <AbsDimension x="26" y="26"/>
         </Size>
         <Anchors>
-          <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+          <Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT">
             <Offset>
               <AbsDimension x="0" y="-20"/>
             </Offset>
@@ -260,6 +260,11 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 
     <Frames>
       <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+      <Scripts>
+        <OnLoad>
+          -- Not sure why, but this seems needed?
+        </OnLoad>
+      </Scripts>
         <Size x="550" y="480"/>
         
         <Anchors>
@@ -336,6 +341,11 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
 
     <Frames>
       <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate" hidden="false">
+        <Scripts>
+          <OnLoad>
+            -- Not sure why, but this seems needed?
+          </OnLoad>
+        </Scripts>
         <Size x="550" y="480"/>
         <Anchors>
           <Anchor point="TOPLEFT" relativeTo="$parent_Description" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
