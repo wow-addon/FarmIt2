@@ -24,27 +24,6 @@ function FI_HasTokens( currency )
 
   local currencyName
   if currency then currencyName = currency.name end
-
-    -- check if player has any trackable currencies available
-  for index=1, C_CurrencyInfo.GetCurrencyListSize() do
-    local name, isHeader, isExpanded, isUnused, isWatched, count, icon, maximum, hasWeeklyLimit, currentWeeklyAmount = C_CurrencyInfo.GetCurrencyListInfo(index);
-
-    if name then name = name.name end
-
-    -- NOTE: new characters start out with [Player vs. Player, Conquest Points = 0] 
-    -- even though they have NO currency tab on their character window
-    if name and (not isHeader) and (C_CurrencyInfo.GetCurrencyListSize() > 2) then
-      if currencyName then
-        -- query matched, return item data
-        if (currencyName == name) then
-          return index, name, count, maximum, hasWeeklyLimit, currentWeeklyAmount;
-        end
-      else
-        -- found a currency, exit loop
-        return true;
-      end
-    end
-  end
 end
 
 -- currency bootstrap
@@ -85,63 +64,6 @@ function FI_Update_Currency( event )
   local temp = LIB.table.copy(FI_SVPC_DATA.Currencies);
 
   -- process DATA UPDATES for all three "watched currency" slots
-  for cid=1,3 do
-    -- API query
-    local name,count,icon = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
-
-    local results;
-    if name then
-      -- server returned something for the current slot
-      local query = {
-        ["name"] = name,
-        ["count"] = count,
-        ["icon"] = icon,
-      }
-
-      -- check for lastcount data in snapshot
-      local existing = FI_DB.select(temp, {["name"] = name}, true);
-      if existing then
-        query["lastcount"] = existing.count;
-      else
-        query["lastcount"] = count;
-      end
-
-      -- check for cached objective data
-      if FI_SVPC_CACHE.Currencies then
-        local cached = FI_DB.select(FI_SVPC_CACHE.Currencies, {["name"] = name}, true);
-        if cached then
-          query["objective"] = cached.objective;
-        else
-          query["objective"] = 0;
-          query["success"] = false;
-        end
-      end
-
-      ------------------------------------------------------------
-      -- save updated record
-      ------------------------------------------------------------
-      results = FI_DB.update(FI_SVPC_DATA.Currencies, {id = cid}, query);
-
-    elseif (FI_LOADING == false) then
-      ------------------------------------------------------------
-      -- clear unused "slot"
-      ------------------------------------------------------------
-      results = FI_Clear_Currency(cid);
-
-    else
-      ------------------------------------------------------------
-      -- use existing data
-      ------------------------------------------------------------
-      results = FI_DB.select(FI_SVPC_DATA.Currencies, {id = cid}, true);
-    end
-
-    ------------------------------------------------------------
-    -- progress tracking
-    ------------------------------------------------------------
-    if (FI_LOADING == false) and (FI_SVPC_CONFIG.Currency.tracking == true) then
-      FI_Progress(results);
-    end
-  end
 
   ------------------------------------------------------------
   -- update interface
@@ -224,7 +146,6 @@ function FI_UI_Currency()
       _G[f_name.."_Count"]:SetVertexColor(color[1], color[2], color[3]);
 
       -- color the backpack token text
-      local name,count,icon = C_CurrencyInfo.GetBackpackCurrencyInfo(cid);
       --BruteForceRemovalForInitialDragonFlightCompatibility--if name then
       --BruteForceRemovalForInitialDragonFlightCompatibility--  _G["BackpackTokenFrameToken"..cid].count:SetVertexColor(color[1], color[2], color[3]);
       --BruteForceRemovalForInitialDragonFlightCompatibility--end
